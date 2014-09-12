@@ -1,0 +1,422 @@
+/* 
+ * -----------------------------------------------------------------------
+ * Log6
+ * http://log6.com/
+ * -----------------------------------------------------------------------
+ * designed by Switch Creative
+ * http://switch.is
+ * -----------------------------------------------------------------------
+ * Structure
+ * Bootstrap • http://getbootstrap.com
+ * -----------------------------------------------------------------------	
+*/
+
+/* 
+ * ------------------------------------------------------- 
+ * Mixins
+ * ------------------------------------------------------- 
+*/	
+	// http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/ &
+	// https://gist.github.com/Victa/1209370
+	.rem-calc(@sizeValue) {
+		@remValue: 	@sizeValue/10;
+		@pxValue: 	@sizeValue;
+		font-size: 	~"@{pxValue}px"; 
+		font-size: 	~"@{remValue}rem";
+	}
+
+	.background-cover(@url, @position: center) {
+		background-image: url(@url);
+		background-position: center @position;
+		-moz-background-size: cover;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.unstyled {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.col-centered {
+		float: none !important;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.transform(@transform-properties) {
+		-webkit-transform: @transform-properties;
+		    -ms-transform: @transform-properties;
+				transform: @transform-properties;
+	}
+
+	
+	.css-triangle(@triangle-size, @triangle-color, @triangle-direction) {
+		content: "";
+		display: block;
+		width: 0;
+		height: 0;
+		border: inset @triangle-size;
+
+		& when (@triangle-direction = top) {
+			border-color: @triangle-color transparent transparent transparent;
+			border-top-style: solid;
+		}
+
+		& when (@triangle-direction = bottom) {
+			border-color: transparent transparent @triangle-color transparent;
+			border-bottom-style: solid;
+		}
+
+		& when (@triangle-direction = left) {
+			border-color: transparent transparent transparent @triangle-color;
+			border-left-style: solid;
+		}
+
+		& when (@triangle-direction = right) {
+			border-color: transparent @triangle-color transparent transparent;
+			border-right-style: solid;
+		}
+
+	}// .css-triangle
+
+	.happy-font { -webkit-font-smoothing: antialiased; }
+	.happy-font-off { -webkit-font-smoothing: subpixel-antialiased; }
+
+
+	
+	// https://gist.github.com/yankeyhotel/ecec3b196886eab6b05f
+	.hex-to-rgba (@color, @alpha: 1) {
+		@hex-to-rgba-red: red(@color);
+		@hex-to-rgba-green: green(@color);
+		@hex-to-rgba-blue: blue(@color);
+		@rgba: rgba(@hex-to-rgba-red, @hex-to-rgba-green, @hex-to-rgba-blue, @alpha);
+	}
+	
+	// https://gist.github.com/yankeyhotel/cf0ed778f7feaafbc131
+	.hex-to-rgba-vertical-gradient ( @start-color, @start-alpha: 1, @end-color, @end-alpha ) {
+		// Start Color
+		@start-red: red(@start-color);
+		@start-green: green(@start-color);
+		@start-blue: blue(@start-color);
+		@start-rgba: rgba(@start-red, @start-green, @start-blue, @start-alpha);
+
+		// End Color
+		@end-red: red(@end-color);
+		@end-green: green(@end-color);
+		@end-blue: blue(@end-color);
+		@end-rgba: rgba(@end-red, @end-green, @end-blue, @end-alpha);
+	}
+	
+
+
+	// http://lea.verou.me/2011/03/beveled-corners-negative-border-radius-with-css3-gradients/
+	.inverted-border-radius (@color, @size) {
+		background:
+			linear-gradient(135deg, transparent @size, @color 0) top left,
+			linear-gradient(225deg, transparent @size, @color 0) top right,
+			linear-gradient(315deg, transparent @size, @color 0) bottom right,
+			linear-gradient(45deg,  transparent @size, @color 0) bottom left;
+		background-size: 50% 50%;
+		background-repeat: no-repeat;
+		background-image:
+			radial-gradient(circle at 0 0, transparent @size, @color @size+1),
+			radial-gradient(circle at 100% 0, transparent @size, @color @size+1),
+			radial-gradient(circle at 100% 100%, transparent @size, @color @size+1),
+			radial-gradient(circle at 0 100%, transparent @size, @color @size+1);
+	}// .inverted-border-radius
+
+
+
+	// https://gist.github.com/yankeyhotel/24610d72ead860227484
+	.valign-hldr {
+		display: block;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+
+		.valign-table {
+			display: table;
+			height: 100%;
+			width: 100%;
+			
+			.valign-cell {
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+			}// .valign-cell
+
+		}// .valign-table
+
+	}// .valign-hldr
+
+
+	
+	// @media queries vars
+	// @mq-xxs - [   0px -  480px]
+	// @mq-xs  - [ 481px -  767px]
+	// @mq-sm  - [ 768px -  991px]
+	// @mq-md  - [ 992px - 1199px]
+	// @mq-lg  - [1200px +] 
+	@mq-xxs: ~"only screen and (max-width: @{screen-xs})";											
+	@mq-xs:  ~"only screen and (min-width: @{screen-xs} + 1) and (max-width: @{screen-xs-max})";	
+	@mq-sm:  ~"only screen and (min-width: @{screen-sm}) and (max-width: @{screen-sm-max})";			
+	@mq-md:  ~"only screen and (min-width: @{screen-md}) and (max-width: @{screen-md-max})";			
+	@mq-lg:  ~"only screen and (min-width: @{screen-lg})"; 											
+	
+	@mq-xs-plus: ~"only screen and (min-width: @{screen-xs})"; 	// 480px +
+	@mq-sm-plus: ~"only screen and (min-width: @{screen-sm})"; 	// 768px +
+	@mq-md-plus: ~"only screen and (min-width: @{screen-md})"; 	// 992px +
+
+	// Using for styles inbetween desktop and mobile
+	@mq-group-2: ~"only screen and (min-width: 425px)";
+	@mq-group-3: ~"only screen and (min-width: 575px)";
+	@mq-group-4: ~"only screen and (min-width: 750px)";
+	@mq-group-5: ~"only screen and (min-width: 900px)";
+	
+
+	// display block and inline-block
+	.block-xs {
+		@media @mq-xxs { display: block; }
+	}
+	.inline-xs {
+		display: block;
+		@media @mq-xxs { display: inline; }
+	}
+	.hidden-xxs {
+		display: inline;
+		@media @mq-xxs { display: none; }
+	}
+
+/* -------------------------------------------------------
+ * ------------------------------------------------------- */
+
+
+/*
+ * -----------------------------------------------------------------------	
+ * Fonts - typography.com & @font-face
+ * -----------------------------------------------------------------------
+ */
+
+	.shorthand ( @size: @font-size-base, @lineHeight: @line-height-base ) {
+		.rem-calc(@size);
+		font-weight: normal;
+		line-height: @lineHeight;
+	}
+
+	.sans-book( @size: @font-size-base, @lineHeight: @line-height-base ) {
+		.shorthand(@size, @lineHeight);
+		font-family: @sans-book;
+	}
+
+	.sans-italic( @size: @font-size-base, @lineHeight: @line-height-base ) {
+		.shorthand(@size, @lineHeight);
+		font-family: @sans-italic;
+	}
+
+	.sans-bold( @size: @font-size-base, @lineHeight: @line-height-base ) {
+		.shorthand(@size, @lineHeight);
+		font-family: @sans-bold;
+	}
+
+	.sans-bold-italic( @size: @font-size-base, @lineHeight: @line-height-base ) {
+		.shorthand(@size, @lineHeight);
+		font-family: @sans-bold-italic;
+	}
+
+
+
+/*
+ * -----------------------------------------------------------------------
+ * Colors / Backgrounds
+ * -----------------------------------------------------------------------
+ */
+ 	@white: 		#fff;
+	@gray-light:  	#efefe8;
+	@gray-middle: 	#c4c4bf;
+	@gray: 			#9b9b98;
+	@gray-dark: 	#494948;
+	@gray-darker: 	#333332;
+	@black: 		#191919;
+
+	@gray-border: 	#b3b3b3;
+
+	@crimson: 		#511000;
+	@red-dark: 		#7C1919;
+	@red-middle: 	#991F00;
+	@red: 			#AF2900;
+	@red-light: 	#C62A00;
+	@red-bright: 	#D83000;
+
+	@gold-light: 	#d9b679;
+	@gold: 			#bc9a57;
+	@copper: 		#aa7838;
+	@carmel: 		#ae580a;
+	@bronze: 		#814300;
+	@umber: 		#662c00;
+	
+/*
+ * -----------------------------------------------------------------------	
+ * -----------------------------------------------------------------------
+ */
+
+
+
+/* 
+ * ------------------------------------------------------- 
+ * Typography Styles
+ * ------------------------------------------------------- 
+*/	
+	
+/* -------------------------------------------------------
+ * End Typography Styles  
+ * ------------------------------------------------------- */
+
+
+
+/*
+ * -----------------------------------------------------------------------
+ * Buttons
+ * -----------------------------------------------------------------------
+ */
+ 	.btn {
+
+	}// .btn
+/*
+ * -----------------------------------------------------------------------	
+ * -----------------------------------------------------------------------
+ */
+
+
+
+
+/* 
+ * ------------------------------------------------------- 
+ * Window Width
+ * ------------------------------------------------------- 
+*/
+	#width {
+		.box-shadow(none);
+		.opacity(1);
+		.transition(opacity .3s ease-out);
+		border-color: transparent;
+		background-color: rgba(0, 0, 0, .5);
+		margin-bottom: 0;
+		padding: .2em .5em;
+		position: fixed;
+			left: 10px;
+			bottom: 10px;
+		width: auto;
+		z-index: 9000;
+		
+		p {
+			color: #fff;
+			font-size: .9em;
+			margin: 0; 
+			padding: 0;
+			text-align: center;
+			&:after { display: none; }
+		}
+	 
+		&:hover {
+			.opacity(1);
+			p:after { display: inline-block; }
+		}
+		
+	}
+
+	@media @mq-xxs {
+		#width p { color: #f1c40f; }
+		#width p:after {
+				content: " |  @mq-xxs [0px -  480px]";  
+		} 
+	}
+	 
+	@media @mq-xs {
+		#width p { color: #f39c12; }
+		#width p:after { 
+				content: " |  @mq-xs [481px -  767px]";  
+		} 
+	}
+	 
+	@media @mq-sm {
+		#width p { color: #e67e22; }
+		#width p:after { 
+			content: " |  @mq-sm [768px -  991px]"; 
+		}
+	}
+	 
+	@media @mq-md {
+		#width p { color: #d35400; }
+		#width p:after { 
+			content: " |  @mq-md [992px - 1199px]"; 
+		}
+	}
+	 
+	@media @mq-lg {
+		#width p { color: #e74c3c; }
+		#width p:after {
+			content: " |  @mq-lg [1200px +]"; 
+		}
+	}
+/* -------------------------------------------------------
+ * End Window Width  
+ * ------------------------------------------------------- */
+
+
+/* 
+ * ------------------------------------------------------- 
+ * Flexbox Mixins
+ * ------------------------------------------------------- 
+*/
+
+	.flexit( @flex-dir ) {
+		display: -webkit-box;	/* OLD - iOS 6-, Safari 3.1-6 */
+		display: -moz-box;		/* OLD - Firefox 19- (buggy but mostly works) */
+		display: -ms-flexbox;	/* TWEENER - IE 10 */
+		display: -webkit-flex;	/* NEW - Chrome */
+		display: flex;			/* NEW, Spec - Opera 12.1, Firefox 20+ */
+		 -webkit-box-direction: normal;
+		-webkit-flex-direction: @flex-dir;
+		   -moz-flex-direction: @flex-dir;
+			-ms-flex-direction: @flex-dir;
+			 -o-flex-direction: @flex-dir;	
+			    flex-direction: @flex-dir;
+	}
+
+	.box-order( @box-order-number: 1 ) {
+		-webkit-box-flex: 1;	/* OLD - iOS 6-, Safari 3.1-6 */
+		   -moz-box-flex: 1;	/* OLD - Firefox 19- */
+		    -webkit-flex: 1;	/* Chrome */
+		  		-ms-flex: 1;	/* IE 10 */
+		  			flex: 1;
+		-webkit-box-ordinal-group: @box-order-number;	/* OLD - iOS 6-, Safari 3.1-6 */
+		   -moz-box-ordinal-group: @box-order-number;	/* OLD - Firefox 19- */
+				   -ms-flex-order: @box-order-number;	/* TWEENER - IE 10 */
+					-webkit-order: @box-order-number;	/* NEW - Chrome */
+						 	order: @box-order-number;
+	}
+
+/* -------------------------------------------------------
+ * End Flexbox  
+ * ------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
