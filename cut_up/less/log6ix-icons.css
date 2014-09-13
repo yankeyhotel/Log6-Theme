@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'log6ix-icons';
-  src: url('../font/log6ix-icons.eot?26306572');
-  src: url('../font/log6ix-icons.eot?26306572#iefix') format('embedded-opentype'),
-       url('../font/log6ix-icons.woff?26306572') format('woff'),
-       url('../font/log6ix-icons.ttf?26306572') format('truetype'),
-       url('../font/log6ix-icons.svg?26306572#log6ix-icons') format('svg');
+  src: url('log6ix-icons.eot?26306572');
+  src: url('log6ix-icons.eot?26306572#iefix') format('embedded-opentype'),
+       url('log6ix-icons.woff?26306572') format('woff'),
+       url('log6ix-icons.ttf?26306572') format('truetype'),
+       url('log6ix-icons.svg?26306572#log6ix-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }

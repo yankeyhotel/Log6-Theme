@@ -68,8 +68,8 @@
 					<li><a href="">food contamination alerts</a></a></li>
 					<li><a href="">customer service</a></li>
 					<li><a href="">login</a></li>
-					<li class="social-fb"><a href="">facebook</a></li>
-					<li class="social-tw"><a href="">twitter</a></li>
+					<li class="social"><a href=""><img src="{{ 'header-facebook.svg' | asset_url }}" alt="Facebook"></a></li>
+					<li class="social last"><a href=""><img src="{{ 'header-twitter.svg' | asset_url }}" alt="Twitter"></a></li>
 				</ul>
 			</div>
 
@@ -79,14 +79,32 @@
 					<li><a href="">Individual Products</a></li>
 					<li><a href="">Bundles</a></li>
 					<li><a href="">Contact</a></li>
-					<li class="cart"><a href="">cart<span class="qty">1</span></a></li>
+					<li class="cart"><a href=""><span class="glyphicon glyphicon-shopping-cart"></span> <span class="qty">1</span></a></li>
 				</ul>
 			</div>
 		</nav>
 
 		<header id="header">
-
+			<div class="container">
+				<p id="logo"><a href="/"><img src="{{ 'header-logo.svg' | asset_url }}" alt="Log 6ix"></a></p>
+			</div>
 		</header>
+
+		<div class="header-component">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-sm-9">
+						<h1>Cleaner Home.<br>
+						Healthier Family.<br>
+						<strong>Better Living.</strong></h1>
+						<p>Kills 99.99% of the most common germs.</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
 
 		{{ content_for_layout }}
 
