@@ -239,7 +239,12 @@
 		}
 		
 		.product {
+			.clearfix();
+			margin-bottom: 150px;
+
 			.content {
+				
+				.description { display: none; }
 
 				h1 {
 					.sans-bold(48, 1.1);
@@ -264,9 +269,10 @@
 						text-transform: uppercase;
 					}// .value
 
-					&.shipping {
+					&.shipping,
+					span[style*="#00ff00"] {
 						.sans-book(24);
-						color: @green;
+						color: @green !important;
 					}// .shipping
 
 				}// p
@@ -295,16 +301,30 @@
 					margin: 0 auto;
 					position: relative;
 					text-align: center;
-					width: 470px;
 					
 					img { max-width: 100%; }
 
 					.special {
 						.square(160px);
 						position: absolute;
-							top: 146px;
-							left: -90px;
 					}
+
+					.sanitize-deodorize + .special {
+						top: 146px;
+						left: 20px;
+					}
+
+					.clean-freshen + .special {
+						top: 76px;
+						right: -100px;
+					}
+
+					.odor-elimination + .special {
+						top: 146px;
+						left: 10px;
+					}
+
+
 				}// a
 			}// .img
 			

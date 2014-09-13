@@ -28,22 +28,22 @@
 
 	<!--[if lt IE 9]>{{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}<![endif]-->
 
-	<link rel="apple-touch-icon" sizes="57x57" href="{{ 'apple-touch-icon-57x57.png | asset_url }}">
-	<link rel="apple-touch-icon" sizes="114x114" href="{{ 'apple-touch-icon-114x114.png | asset_url }}">
-	<link rel="apple-touch-icon" sizes="72x72" href="{{ 'apple-touch-icon-72x72.png | asset_url }}">
-	<link rel="apple-touch-icon" sizes="144x144" href="{{ 'apple-touch-icon-144x144.png | asset_url }}">
-	<link rel="apple-touch-icon" sizes="60x60" href="{{ 'apple-touch-icon-60x60.png | asset_url }}">
-	<link rel="apple-touch-icon" sizes="120x120" href="{{ 'apple-touch-icon-120x120.png | asset_url }}">
-	<link rel="apple-touch-icon" sizes="76x76" href="{{ 'apple-touch-icon-76x76.png | asset_url }}">
-	<link rel="apple-touch-icon" sizes="152x152" href="{{ 'apple-touch-icon-152x152.png | asset_url }}">
+	<link rel="apple-touch-icon" sizes="57x57" href="{{ 'apple-touch-icon-57x57.png' | asset_url }}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ 'apple-touch-icon-114x114.png' | asset_url }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ 'apple-touch-icon-72x72.png' | asset_url }}">
+	<link rel="apple-touch-icon" sizes="144x144" href="{{ 'apple-touch-icon-144x144.png' | asset_url }}">
+	<link rel="apple-touch-icon" sizes="60x60" href="{{ 'apple-touch-icon-60x60.png' | asset_url }}">
+	<link rel="apple-touch-icon" sizes="120x120" href="{{ 'apple-touch-icon-120x120.png' | asset_url }}">
+	<link rel="apple-touch-icon" sizes="76x76" href="{{ 'apple-touch-icon-76x76.png' | asset_url }}">
+	<link rel="apple-touch-icon" sizes="152x152" href="{{ 'apple-touch-icon-152x152.png' | asset_url }}">
 	<meta name="apple-mobile-web-app-title" content="Log6ix">
-	<link rel="icon" type="image/png" href="{{ 'favicon-196x196.png | asset_url }}" sizes="196x196">
-	<link rel="icon" type="image/png" href="{{ 'favicon-160x160.png | asset_url }}" sizes="160x160">
-	<link rel="icon" type="image/png" href="{{ 'favicon-96x96.png | asset_url }}" sizes="96x96">
-	<link rel="icon" type="image/png" href="{{ 'favicon-16x16.png | asset_url }}" sizes="16x16">
-	<link rel="icon" type="image/png" href="{{ 'favicon-32x32.png | asset_url }}" sizes="32x32">
+	<link rel="icon" type="image/png" href="{{ 'favicon-196x196.png' | asset_url }}" sizes="196x196">
+	<link rel="icon" type="image/png" href="{{ 'favicon-160x160.png' | asset_url }}" sizes="160x160">
+	<link rel="icon" type="image/png" href="{{ 'favicon-96x96.png' | asset_url }}" sizes="96x96">
+	<link rel="icon" type="image/png" href="{{ 'favicon-16x16.png' | asset_url }}" sizes="16x16">
+	<link rel="icon" type="image/png" href="{{ 'favicon-32x32.png' | asset_url }}" sizes="32x32">
 	<meta name="msapplication-TileColor" content="#6a4929">
-	<meta name="msapplication-TileImage" content="{{ 'mstile-144x144.png | asset_url }}">
+	<meta name="msapplication-TileImage" content="{{ 'mstile-144x144.png' | asset_url }}">
 	<meta name="application-name" content="Log6ix">
 
 	{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
@@ -65,9 +65,18 @@
 		<nav id="nav" class="container">
 			<div class="nav-top">
 				<ul>
-					<li><a href="">food contamination alerts</a></a></li>
-					<li><a href="">customer service</a></li>
-					<li><a href="">login</a></li>
+					{% for link in linklists.header-small-nav.links %}
+						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+					{% endfor %}
+					<li>
+						{% if shop.customer_accounts_enabled %}
+							{% if customer %}
+								<a href="/account">My Account</a> 
+							{% else %}
+								{{ 'Login' | customer_login_link }}
+							{% endif %}
+						{% endif %}
+					</li>
 					<li class="social"><a href=""><img src="{{ 'header-facebook.svg' | asset_url }}" alt="Facebook"></a></li>
 					<li class="social last"><a href=""><img src="{{ 'header-twitter.svg' | asset_url }}" alt="Twitter"></a></li>
 				</ul>
@@ -75,129 +84,37 @@
 
 			<div class="nav-bottom">
 				<ul>
-					<li><a href="">About</a></li>
-					<li><a href="">Individual Products</a></li>
-					<li><a href="">Bundles</a></li>
-					<li><a href="">Contact</a></li>
-					<li class="cart"><a href=""><span class="glyphicon glyphicon-shopping-cart"></span> <span class="qty">1</span></a></li>
+					{% for link in linklists.main-menu.links %}
+						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+					{% endfor %}
+					<li class="cart"><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="qty">{{ cart.item_count }}</span></a></li>
 				</ul>
 			</div>
 		</nav>
 
 		<header id="header">
 			<div class="container">
-				<p id="logo"><a href="/"><img src="{{ 'header-logo.svg' | asset_url }}" alt="Log 6ix"></a></p>
+				<p id="logo"><a href="/"><img src="{{ 'header-logo.svg' | asset_url }}" alt="Log6ix"></a></p>
 			</div>
 		</header>
 
-		<div class="header-component home">
-			<div class="container">
-				<div class="row">
-					
-					<div class="col-sm-9">
-						<h1><span class="text-hide">Log 6 </span>Cleaner Home.<br>
-							Healthier Family.<br>
-							<strong>Better Living.</strong>
-						</h1>
-						<p>Kills 99.99% of the most common germs.</p>
-						<a href="" class="btn btn-orange">View individual Products</a>
-						<a href="" class="btn btn-green">View product bundles</a>
- 					</div>
-
- 					<div class="col-sm-6">
-						<div class="product-hldr">
-							<img src="{{ 'home-product.png' | asset_url }}" alt="Home Product">
-						</div>
- 					</div>
-
-				</div>
-			</div>
-		</div>
+		
+		{{ content_for_layout }}
 
 		
-		<!-- {{ content_for_layout }} -->
-
-
-		<div class="products container">
-			<h2>Bundles</h2>
-
-			<div class="row">
-				<section class="product bundle">
-					<div class="col-sm-6">
-						<div class="content">
-							<p class="value">$24.50 VALUE</p>
-							<h1>Sanitize &amp; Deodorize</h1>
-							<h2>$20.00</h2>
-							<p class="shipping">$25 with shipping</p>
-							<ul>
-								<li>1 Natural Odor Eliminator</li>
-								<li>2 Alcohol Free Hand Sanitizers</li>
-							</ul>
-							<a href="" class="btn btn-orange">Buy Now!</a>
-						</div>
-					</div>
-					<div class="col-sm-9">
-						<div class="img">
-							<a href="">
-								<img src="{{ 'bundle_1-sanitize_deodorize.png' | asset_url }}" alt="Sanitize &amp; Deodorize">
-								<img class="special" src="{{ 'products-special-cta.svg' | asset_url }}" alt="Special">
-							</a>
-						</div>
-					</div>
-				</section>
-			</div>
-
-
-			<h2>Individual Products</h2>
-			
-			<div class="row">
-				<div class="col-sm-7">
-					<section class="product individual">
-						<div class="content">
-							<h1>Natural Odor Eliminator</h1> 
-							<h2>$8.00</h2>
-							<p class="shipping">$25 with shipping</p>
-							<p>Eliminates urine &amp; other ogranic odors.</p>
-							<a href="" class="btn btn-orange">Buy Now!</a>
-						</div>
-						<div class="img">
-							<img src="{{ 'indiv-natual-odor-eliminator.png' | asset_url }}" alt="Natural Odor Eliminator">
-						</div>
-					</section>
-				</div>
-				<div class="col-sm-7 col-sm-offset-1">
-					<section class="product individual">
-						<div class="content">
-							<h1>Natural Odor Eliminator</h1> 
-							<h2>$8.00</h2>
-							<p class="shipping">$25 with shipping</p>
-							<p>Eliminates urine &amp; other ogranic odors.</p>
-							<a href="" class="btn btn-orange">Buy Now!</a>
-						</div>
-						<div class="img">
-							<img src="{{ 'indiv-natual-odor-eliminator.png' | asset_url }}" alt="Natural Odor Eliminator">
-						</div>
-					</section>
-				</div>
-			</div>
-
-		</div>
-
-
-
 		<footer id="footer">
 			<div class="container">
 				<ul class="big">
-					<li><a href="">about</a></li>
-					<li><a href="">individual products</a></li>
-					<li><a href="">bundles</a></li>
-					<li><a href="">contact</a></li>
+					{% for link in linklists.footer-big.links %}
+						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+					{% endfor %}
 				</ul>
 				<ul class="small">
-					<li><a href="">Privacy Policy</a></li>
-					<li><a href="">Terms &amp; Conditions</a></li>
+					{% for link in linklists.footer.links %}
+						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+					{% endfor %}
 				</ul>
-				<p id="logo-footer"><a href="/"><img src="{{ 'header-logo.svg' | asset_url }}" alt="Log 6ix"></a></p>
+				<p id="logo-footer"><a href="/"><img src="{{ 'header-logo.svg' | asset_url }}" alt="Log6ix"></a></p>
 			</div>
 		</footer>
 

@@ -9,7 +9,72 @@ var switchImage = function(newImageSrc, newImage, mainImageDomEl) {
   jQuery(mainImageDomEl).attr('src', newImageSrc);  
 };
 
+
 jQuery(function($) {
+
+	
+	/* Scroll to hash */
+	/*==========================*/
+	/*
+	setTimeout(function() {
+		if (location.hash) {
+			window.scrollTo(0, 0);
+		}
+	}, 1);
+
+	setTimeout(function(){
+		$("a[href="+ location.hash +"]").trigger("click", function(){ });
+	}, 500);
+	*/
+
+	if ( $("body").hasClass("template-index") ) {
+		// scroll to hash
+		$('a[href*=#]:not([href=#]):not([href=#contact])').click(function() {
+			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+				var target = $(this.hash);
+				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				if (target.length) {
+					$('html,body').animate({
+						scrollTop: target.offset().top
+					}, 1000);
+					return false;
+				}
+			}
+		});
+	} else {
+		$("a[href=#individual-products], a[href=#bundles]").each(function(){
+			var old_href = $(this).attr("href");
+			$(this).attr("href", "/"+old_href);
+		});
+	}
+
+
+	/* Helpful Text Formats */
+	/*==========================*/
+	var blue 	= "#0000ff",	// description
+		red 	= "#ff0000",	// value
+		green 	= "#00ff00";	// shipping
+
+	if ( $(".product").length ) {
+
+		// find all the "blue" descriptions
+		$("span[style*='"+ blue +"']").each(function(){
+			$(this).parent().hide();
+		});
+
+		// find all the values
+		$("span[style*='"+ red +"']").each(function(){
+			var value = $(this).text();
+			$(this).parent().parent().prepend("<p class='value'>"+ value +"</p>");
+			$(this).remove();
+		});
+
+	}// if
+
+
+
+
+
                     
   /* Placeholder JS */
   /*==========================*/

@@ -15,25 +15,119 @@
   Learn how to read theme settings in your theme.
 {% endcomment %}
 
-{% unless settings.homepage_page == blank or pages[settings.homepage_page].empty? %}
-{% assign page = pages[settings.homepage_page] %}
-<div class="rte grid-margins">
-  {{ page.content }}
-</div>
-{% endunless %}
+	<div class="header-component home">
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-sm-9">
+					<h1><span class="text-hide">Log 6 </span>Cleaner Home.<br>
+						Healthier Family.<br>
+						<strong>Better Living.</strong>
+					</h1>
+					<p>Kills 99.99% of the most common germs.</p>
+					<a href="#individual-products" class="btn btn-orange">View individual Products</a>
+					<a href="#bundles" class="btn btn-green">View product bundles</a>
+				</div>
 
-{% unless settings.homepage_collection == blank or collections[settings.homepage_collection].empty? %}
-{% assign collection = collections[settings.homepage_collection] %}
-<ul class="grid clearfix">
-{% for product in collection.products %}
-  {% include 'product-grid-item' with 'three-per-row' %}
-{% else %}
-<li>
-  <p>
-    You have no products in your {{ collections[settings.homepage_collection].title }} collection. 
-    <a href="http://www.shopify.com/admin/collections">Add some.</a>
-  <p>
-</li>
-{% endfor %}
-</ul>
-{% endunless %}
+				<div class="col-sm-6">
+					<div class="product-hldr">
+						<img src="{{ 'home-product.png' | asset_url }}" alt="Home Product">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="products container">
+		<h2 id="bundles">Bundles</h2>
+
+		<div class="row">
+			
+			{% for product in collections.bundles.products %}
+				<section class="product bundle">
+					<div class="col-sm-6">
+						<div class="content">
+							<h1>{{ product.title }}</h1>
+							<h2>${{ product.price | money_without_currency }}</h2>
+							{{ product.description }}
+
+							{% if product.available == false %}
+								<a href="{{ product.url }}" class="btn btn-orange">Sold Out!</a>
+							{% else %}
+								<a href="{{ product.url }}" class="btn btn-orange">Buy Now!</a>
+							{% endif %}
+
+						</div>
+					</div>
+					<div class="col-sm-9">
+						<div class="img">
+							<a href="{{ product.url }}" title="{{ product.title }}">
+								<img class="{{ product.handle }}" src="{{ product.featured_image | product_img_url: 'master' }}" alt="{{ product.title }}">
+								<img class="special" src="{{ 'products-special-cta.svg' | asset_url }}" alt="Special">
+							</a>
+						</div>
+					</div>
+				</section>
+			{% endfor %}
+
+		</div>
+
+
+		<h2 id="individual-products">Individual Products</h2>
+			
+		<div class="row">
+			
+			{% for product in collections.individual-products.products %}
+				<div class="col-sm-7 {% cycle '', 'col-sm-offset-1' %}">
+					<section class="product individual">
+						<div class="content">
+							<h1>{{ product.title }}</h1> 
+							<h2>${{ product.price | money_without_currency }}</h2>
+							
+							{{ product.description }}
+
+							{% if product.available == false %}
+								<a href="{{ product.url }}" class="btn btn-orange">Sold Out!</a>
+							{% else %}
+								<a href="{{ product.url }}" class="btn btn-orange">Buy Now!</a>
+							{% endif %}
+						</div>
+						<div class="img">
+							<img class="{{ product.handle }}" src="{{ product.featured_image | product_img_url: 'master' }}" alt="{{ product.title }}">
+						</div>
+					</section>
+				</div>
+			{% endfor %}
+
+		</div>
+
+	</div>
+
+{% comment %}
+	<!-- Used to show the frontpage WYSIWYG content -->
+	{% unless settings.homepage_page == blank or pages[settings.homepage_page].empty? %}
+		{% assign page = pages[settings.homepage_page] %}
+		<div class="rte grid-margins">
+			{{ page.content }}
+		</div>
+	{% endunless %}
+
+
+	{% unless settings.homepage_collection == blank or collections[settings.homepage_collection].empty? %}
+		{% assign collection = collections[settings.homepage_collection] %}
+		<ul class="grid clearfix">
+		{% for product in collection.products %}
+		  {% include 'product-grid-item' with 'three-per-row' %}
+		{% else %}
+		<li>
+		  <p>
+		    You have no products in your {{ collections[settings.homepage_collection].title }} collection. 
+		    <a href="http://www.shopify.com/admin/collections">Add some.</a>
+		  <p>
+		</li>
+		{% endfor %}
+		</ul>
+	{% endunless %}
+
+{% endcomment %}

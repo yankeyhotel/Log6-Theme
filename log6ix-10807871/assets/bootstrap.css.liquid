@@ -6680,6 +6680,28 @@ a:hover {
   margin: -30px 0 50px;
   text-transform: uppercase;
 }
+.products .product {
+  margin-bottom: 150px;
+}
+.products .product:before,
+.products .product:after {
+  content: " ";
+  display: table;
+}
+.products .product:after {
+  clear: both;
+}
+.products .product:before,
+.products .product:after {
+  content: " ";
+  display: table;
+}
+.products .product:after {
+  clear: both;
+}
+.products .product .content .description {
+  display: none;
+}
 .products .product .content h1 {
   font-size: 48px;
   font-size: 4.8rem;
@@ -6716,13 +6738,14 @@ a:hover {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-.products .product .content p.shipping {
+.products .product .content p.shipping,
+.products .product .content p span[style*="#00ff00"] {
   font-size: 24px;
   font-size: 2.4rem;
   font-weight: normal;
   line-height: 1.42857143;
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #8faa23;
+  color: #8faa23 !important;
 }
 .products .product .content ul {
   margin: 30px 0 30px -16px;
@@ -6747,7 +6770,6 @@ a:hover {
   margin: 0 auto;
   position: relative;
   text-align: center;
-  width: 470px;
 }
 .products .product .img a img {
   max-width: 100%;
@@ -6756,8 +6778,18 @@ a:hover {
   width: 160px;
   height: 160px;
   position: absolute;
+}
+.products .product .img a .sanitize-deodorize + .special {
   top: 146px;
-  left: -90px;
+  left: 20px;
+}
+.products .product .img a .clean-freshen + .special {
+  top: 76px;
+  right: -100px;
+}
+.products .product .img a .odor-elimination + .special {
+  top: 146px;
+  left: 10px;
 }
 .products .product.individual .content {
   float: left;
