@@ -6232,13 +6232,16 @@ button.close {
   transition: background-position .3s ease-out, text-shadow .4s ease-out;
   border-radius: 0;
   color: #ffffff;
-  padding: 40px 0;
+  padding: 35px 0;
   position: relative;
   text-transform: uppercase;
 }
 .btn.big:hover {
   background-position: -100px top;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: -1px 1px 1px rgba(106, 74, 42, 0.8);
+}
+.btn.lg-font {
+  padding: 30px 0;
 }
 .btn.shadow:before {
   background: url('btn-shadow.png') center top no-repeat;
@@ -6247,7 +6250,14 @@ button.close {
   position: absolute;
   bottom: -26px;
   left: 0;
+  -webkit-transition: left 0.4s ease-out;
+  -o-transition: left 0.4s ease-out;
+  transition: left 0.4s ease-out;
   width: 100%;
+  z-index: -1;
+}
+.btn.shadow:hover:before {
+  left: -20px;
 }
 .btn.btn-orange {
   -webkit-transition: background-position .3s ease-out, text-shadow .4s ease-out;
@@ -6255,7 +6265,7 @@ button.close {
   transition: background-position .3s ease-out, text-shadow .4s ease-out;
   border-radius: 0;
   color: #ffffff;
-  padding: 40px 0;
+  padding: 35px 0;
   position: relative;
   text-transform: uppercase;
   font-size: 18px;
@@ -6267,7 +6277,7 @@ button.close {
 }
 .btn.btn-orange:hover {
   background-position: -100px top;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: -1px 1px 1px rgba(106, 74, 42, 0.8);
 }
 .btn.btn-orange:before {
   background: url('btn-shadow.png') center top no-repeat;
@@ -6276,7 +6286,14 @@ button.close {
   position: absolute;
   bottom: -26px;
   left: 0;
+  -webkit-transition: left 0.4s ease-out;
+  -o-transition: left 0.4s ease-out;
+  transition: left 0.4s ease-out;
   width: 100%;
+  z-index: -1;
+}
+.btn.btn-orange:hover:before {
+  left: -20px;
 }
 .btn.btn-green {
   -webkit-transition: background-position .3s ease-out, text-shadow .4s ease-out;
@@ -6284,7 +6301,7 @@ button.close {
   transition: background-position .3s ease-out, text-shadow .4s ease-out;
   border-radius: 0;
   color: #ffffff;
-  padding: 40px 0;
+  padding: 35px 0;
   position: relative;
   text-transform: uppercase;
   font-size: 18px;
@@ -6296,7 +6313,7 @@ button.close {
 }
 .btn.btn-green:hover {
   background-position: -100px top;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: -1px 1px 1px rgba(106, 74, 42, 0.8);
 }
 .btn.btn-green:before {
   background: url('btn-shadow.png') center top no-repeat;
@@ -6305,7 +6322,14 @@ button.close {
   position: absolute;
   bottom: -26px;
   left: 0;
+  -webkit-transition: left 0.4s ease-out;
+  -o-transition: left 0.4s ease-out;
+  transition: left 0.4s ease-out;
   width: 100%;
+  z-index: -1;
+}
+.btn.btn-green:hover:before {
+  left: -20px;
 }
 /*
  * -----------------------------------------------------------------------	
@@ -6656,7 +6680,7 @@ a:hover {
   margin: -30px 0 50px;
   text-transform: uppercase;
 }
-.products .product .col-sm-6 h1 {
+.products .product .content h1 {
   font-size: 48px;
   font-size: 4.8rem;
   font-weight: normal;
@@ -6665,7 +6689,7 @@ a:hover {
   color: #6a4a2a;
   margin: 0 0;
 }
-.products .product .col-sm-6 h2 {
+.products .product .content h2 {
   font-size: 100px;
   font-size: 10rem;
   font-weight: normal;
@@ -6674,29 +6698,36 @@ a:hover {
   color: #e97242;
   margin: 0 0 30px -5px;
 }
-.products .product .col-sm-6 p {
-  color: #8faa23;
+.products .product .content p {
+  font-size: 20px;
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
 }
-.products .product .col-sm-6 p.value {
+.products .product .content p.value {
   font-size: 24px;
   font-size: 2.4rem;
   font-weight: normal;
   line-height: 1.42857143;
   font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #8faa23;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-.products .product .col-sm-6 p.shipping {
+.products .product .content p.shipping {
   font-size: 24px;
   font-size: 2.4rem;
   font-weight: normal;
   line-height: 1.42857143;
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #8faa23;
 }
-.products .product .col-sm-6 ul {
+.products .product .content ul {
   margin: 30px 0 30px -16px;
 }
-.products .product .col-sm-6 ul li {
+.products .product .content ul li {
   font-size: 20px;
   font-size: 2rem;
   font-weight: normal;
@@ -6704,28 +6735,59 @@ a:hover {
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #6a4a2a;
 }
-.products .product .col-sm-6 .btn {
+.products .product .content .btn {
   font-size: 24px;
   font-size: 2.4rem;
+  padding: 30px 0;
   letter-spacing: .1rem;
   width: 300px;
 }
-.products .product .col-sm-9 a {
+.products .product .img a {
   display: block;
   margin: 0 auto;
   position: relative;
   text-align: center;
   width: 470px;
 }
-.products .product .col-sm-9 a img {
+.products .product .img a img {
   max-width: 100%;
 }
-.products .product .col-sm-9 a .special {
+.products .product .img a .special {
   width: 160px;
   height: 160px;
   position: absolute;
   top: 146px;
   left: -90px;
+}
+.products .product.individual .content {
+  float: left;
+  padding-top: 50px;
+  width: 55%;
+}
+.products .product.individual .content h1 {
+  font-size: 38px;
+  font-size: 3.8rem;
+}
+.products .product.individual .content h2 {
+  font-size: 80px;
+  font-size: 8rem;
+}
+.products .product.individual .content p {
+  margin-bottom: 30px;
+  max-width: 300px;
+}
+.products .product.individual .content p .shipping {
+  margin-bottom: 30px;
+}
+.products .product.individual .content .btn {
+  width: 100%;
+}
+.products .product.individual .img {
+  float: right;
+  width: 45%;
+}
+.products .product.individual .img img {
+  max-width: 100%;
 }
 /* -------------------------------------------------------
  * End Products  
