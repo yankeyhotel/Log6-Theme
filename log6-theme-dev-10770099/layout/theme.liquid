@@ -90,24 +90,79 @@
 			</div>
 		</header>
 
-		<div class="header-component">
+		<div class="header-component home">
 			<div class="container">
 				<div class="row">
 					
 					<div class="col-sm-9">
-						<h1>Cleaner Home.<br>
-						Healthier Family.<br>
-						<strong>Better Living.</strong></h1>
+						<h1><span class="text-hide">Log 6 </span>Cleaner Home.<br>
+							Healthier Family.<br>
+							<strong>Better Living.</strong>
+						</h1>
 						<p>Kills 99.99% of the most common germs.</p>
-					</div>
+						<a href="" class="btn btn-orange">View individual Products</a>
+						<a href="" class="btn btn-green">View product bundles</a>
+ 					</div>
+
+ 					<div class="col-sm-6">
+						<div class="product-hldr">
+							<img src="{{ 'home-product.png' | asset_url }}" alt="Home Product">
+						</div>
+ 					</div>
 
 				</div>
 			</div>
 		</div>
 
+		
+		<!-- {{ content_for_layout }} -->
 
-		{{ content_for_layout }}
 
+		<div class="products container">
+			<h2>Bundles</h2>
+
+			<div class="row">
+				
+				<section class="product bundle">
+					<div class="col-sm-6">
+						<p class="value">$24.50 VALUE</p>
+						<h1>Sanitize &amp; Deodorize</h1>
+						<h2>$20.00</h2>
+						<p class="shipping">$25 with shipping</p>
+						<ul>
+							<li>1 Natural Odor Eliminator</li>
+							<li>2 Alcohol Free Hand Sanitizers</li>
+						</ul>
+						<a href="" class="btn btn-orange">Buy</a>
+					</div>
+					<div class="col-sm-9">
+						<a href="">
+							<img src="{{ 'bundle_1-sanitize_deodorize.png' | asset_url }}" alt="Sanitize &amp; Deodorize">
+							<img class="special" src="{{ 'products-special-cta.svg' | asset_url }}" alt="Special">
+						</a>
+					</div>
+				</section>
+
+			</div>
+		</div>
+
+
+
+		<footer id="footer">
+			<div class="container">
+				<ul class="big">
+					<li><a href="">about</a></li>
+					<li><a href="">individual products</a></li>
+					<li><a href="">bundles</a></li>
+					<li><a href="">contact</a></li>
+				</ul>
+				<ul class="small">
+					<li><a href="">Privacy Policy</a></li>
+					<li><a href="">Terms &amp; Conditions</a></li>
+				</ul>
+				<p id="logo-footer"><a href="/"><img src="{{ 'header-logo.svg' | asset_url }}" alt="Log 6ix"></a></p>
+			</div>
+		</footer>
 
 		{{ 'shop.js'  | asset_url | script_tag }}
 	</body>

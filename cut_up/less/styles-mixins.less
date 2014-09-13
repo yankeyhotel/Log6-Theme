@@ -249,7 +249,7 @@
 
 	@orange: 		#e97242;
 	@orange-dark: 	#ce5e31;
-	
+
 	@coffee: 		#6a4a2a;
 
 	
@@ -278,6 +278,45 @@
  * -----------------------------------------------------------------------
  */
  	.btn {
+		
+		&.big {
+			.transition(~"background-position .3s ease-out, text-shadow .4s ease-out");
+			border-radius: 0;
+			color: @white;
+			padding: 40px 0;
+			position: relative;
+			text-transform: uppercase;
+			&:hover {
+				background-position: -100px top;
+				text-shadow: 0 1px 1px rgba(0,0,0,.5);
+			}
+		}
+
+		&.shadow {
+			&:before {
+				background: url('btn-shadow.png') center top no-repeat;
+				content: ' ';
+				height: 25px;
+				position: absolute;
+					bottom: -26px;
+					left: 0;
+				width: 100%;
+			}
+		}
+
+		&.btn-orange {
+			.big();
+			.sans-bold(18,1);
+			.shadow();
+			background: url("bg-btn-orange.png") center top no-repeat;
+		}
+
+		&.btn-green {
+			.big();
+			.sans-bold(18,1);
+			.shadow();
+			background: url("bg-btn-green.png") center top no-repeat;
+		}
 
 	}// .btn
 /*

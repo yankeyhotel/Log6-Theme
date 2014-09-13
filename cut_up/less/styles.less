@@ -11,7 +11,11 @@
  * -----------------------------------------------------------------------
  */
 
- 	.container { width: 1180px !important; }
+ 	.container { 
+ 		position: relative;
+ 		width: 1180px !important; 
+ 	}
+
  	a {
  		.transition(.3s ease-out color);
  		&:hover { text-decoration: none; }
@@ -25,6 +29,8 @@
 */
 	#nav {
 		height: 110px;
+		position: relative;
+		z-index: 100;
 
 		ul {
 			.list-inline();
@@ -143,15 +149,13 @@
 		.background-cover("bg-header.jpg", center);
 		height: 920px;
 		margin-top: -110px;
-
-		.container {
-			position: relative;
-		}
+		position: relative;
+		z-index: 5;
 
 		#logo {
 			position: absolute;
 				top: 30px;
-				left: 0;
+				left: 10px;
 		 	width: 220px;
 		 	a {
 		 		.opacity(1);
@@ -174,10 +178,17 @@
  * ------------------------------------------------------- 
 */
 	.header-component {
+		margin-top: -920px;
+		position: relative;
+		z-index: 10;
 		
+		.col-sm-9 { padding-top: 230px; }
+		.col-sm-6 { padding-top: 140px; }
+
 		h1 {
 			.sans-book(86, 1);
 			color: @green;
+			margin-bottom: 50px;
 			strong {
 				.sans-bold(86, 1);
 				color: @green-dark;
@@ -187,14 +198,183 @@
 		p {
 			.sans-book(26);
 			color: @coffee;
+			margin-bottom: 50px;
+		}
+
+		.btn {
+			margin-right: 20px;
+			width: 300px;
 		}
 		
+		.product-hldr {
+			text-align: center;
+		}
+
+		&.home {
+			margin-bottom: -100px;
+		}
+
 	}// .header-component
 /* -------------------------------------------------------
  * End Header Component  
  * ------------------------------------------------------- */
 
 
+
+
+/* 
+ * ------------------------------------------------------- 
+ * Products
+ * ------------------------------------------------------- 
+*/
+	.products {
+		position: relative;
+		z-index: 20;
+
+		> h2 {
+			.sans-book(50);
+			color: @green;
+			margin: -30px 0 50px;
+			text-transform: uppercase;
+		}
+		
+		.product {
+			.col-sm-6 {
+
+				h1 {
+					.sans-bold(48, 1.1);
+					color: @coffee;
+					margin: 0 0;
+				}
+
+				h2 {
+					.sans-bold(100, 1);
+					color: @orange;
+					margin: 0 0 30px -5px;
+				}
+
+				p {
+					color: @green;
+
+					&.value {
+						.sans-bold(24);
+						margin-bottom: 10px;
+						text-transform: uppercase;
+					}
+
+					&.shipping {
+						.sans-book(24);
+					}
+
+				}
+
+				ul {
+					margin: 30px 0 30px -16px;
+					li {
+						.sans-book(20, 1.7);
+						color: @coffee;
+					}
+				}// ul
+				
+
+				.btn {
+					.rem-calc(24);
+					letter-spacing: .1rem;
+					width: 300px;
+				}
+
+			}
+
+			.col-sm-9 {
+				a {
+					display: block;
+					margin: 0 auto;
+					position: relative;
+					text-align: center;
+					width: 470px;
+					
+					img { max-width: 100%; }
+
+					.special {
+						.square(160px);
+						position: absolute;
+							top: 146px;
+							left: -90px;
+					}
+				}
+			}
+		}// .product
+
+	}// .products
+/* -------------------------------------------------------
+ * End Products  
+ * ------------------------------------------------------- */
+
+
+
+
+/* 
+ * ------------------------------------------------------- 
+ * Footer
+ * ------------------------------------------------------- 
+*/
+	#footer {
+		background-color: @gray-middle;
+		padding: 125px 0 20px;
+
+		ul {
+			.list-inline();
+			margin: 0;
+
+			&.big {
+				padding-bottom: 80px;
+				li {
+					.sans-bold(18);
+					padding: 0 17px;
+					text-transform: uppercase;
+
+					&:first-child { padding-left: 0; }
+
+					a {
+						color: @green;
+						&:hover { color: @green-dark; }
+					}// a
+				}
+			}// &.big
+			
+			&.small {
+				li {
+					.sans-book(14);
+					padding: 0 17px;
+					&:first-child { padding-left: 0; }
+					a {
+						color: @gray;
+						&:hover { color: @gray-dark; }
+					}
+				}
+			}// &.small
+
+		}// ul
+
+		#logo-footer {
+			position: absolute;
+				top: -52px;
+				right: 0;
+			width: 220px;
+			
+			a {
+				.opacity(1);
+				.transition(opacity .3s ease-out);
+				&:hover { .opacity(.8); }
+			}
+
+			img { max-width: 100%; }
+		}// logo-footer
+
+	}// #footer
+/* -------------------------------------------------------
+ * End Footer  
+ * ------------------------------------------------------- */
 
 
 

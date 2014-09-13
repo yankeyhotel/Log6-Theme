@@ -6226,6 +6226,87 @@ button.close {
  * Buttons
  * -----------------------------------------------------------------------
  */
+.btn.big {
+  -webkit-transition: background-position .3s ease-out, text-shadow .4s ease-out;
+  -o-transition: background-position .3s ease-out, text-shadow .4s ease-out;
+  transition: background-position .3s ease-out, text-shadow .4s ease-out;
+  border-radius: 0;
+  color: #ffffff;
+  padding: 40px 0;
+  position: relative;
+  text-transform: uppercase;
+}
+.btn.big:hover {
+  background-position: -100px top;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+.btn.shadow:before {
+  background: url('btn-shadow.png') center top no-repeat;
+  content: ' ';
+  height: 25px;
+  position: absolute;
+  bottom: -26px;
+  left: 0;
+  width: 100%;
+}
+.btn.btn-orange {
+  -webkit-transition: background-position .3s ease-out, text-shadow .4s ease-out;
+  -o-transition: background-position .3s ease-out, text-shadow .4s ease-out;
+  transition: background-position .3s ease-out, text-shadow .4s ease-out;
+  border-radius: 0;
+  color: #ffffff;
+  padding: 40px 0;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: url("bg-btn-orange.png") center top no-repeat;
+}
+.btn.btn-orange:hover {
+  background-position: -100px top;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+.btn.btn-orange:before {
+  background: url('btn-shadow.png') center top no-repeat;
+  content: ' ';
+  height: 25px;
+  position: absolute;
+  bottom: -26px;
+  left: 0;
+  width: 100%;
+}
+.btn.btn-green {
+  -webkit-transition: background-position .3s ease-out, text-shadow .4s ease-out;
+  -o-transition: background-position .3s ease-out, text-shadow .4s ease-out;
+  transition: background-position .3s ease-out, text-shadow .4s ease-out;
+  border-radius: 0;
+  color: #ffffff;
+  padding: 40px 0;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: url("bg-btn-green.png") center top no-repeat;
+}
+.btn.btn-green:hover {
+  background-position: -100px top;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+.btn.btn-green:before {
+  background: url('btn-shadow.png') center top no-repeat;
+  content: ' ';
+  height: 25px;
+  position: absolute;
+  bottom: -26px;
+  left: 0;
+  width: 100%;
+}
 /*
  * -----------------------------------------------------------------------	
  * -----------------------------------------------------------------------
@@ -6334,6 +6415,7 @@ button.close {
  * -----------------------------------------------------------------------
  */
 .container {
+  position: relative;
   width: 1180px !important;
 }
 a {
@@ -6351,6 +6433,8 @@ a:hover {
 */
 #nav {
   height: 110px;
+  position: relative;
+  z-index: 100;
 }
 #nav ul {
   padding-left: 0;
@@ -6472,14 +6556,13 @@ a:hover {
   background-repeat: no-repeat;
   height: 920px;
   margin-top: -110px;
-}
-#header .container {
   position: relative;
+  z-index: 5;
 }
 #header #logo {
   position: absolute;
   top: 30px;
-  left: 0;
+  left: 10px;
   width: 220px;
 }
 #header #logo a {
@@ -6504,6 +6587,17 @@ a:hover {
  * Header Component
  * ------------------------------------------------------- 
 */
+.header-component {
+  margin-top: -920px;
+  position: relative;
+  z-index: 10;
+}
+.header-component .col-sm-9 {
+  padding-top: 230px;
+}
+.header-component .col-sm-6 {
+  padding-top: 140px;
+}
 .header-component h1 {
   font-size: 86px;
   font-size: 8.6rem;
@@ -6511,6 +6605,7 @@ a:hover {
   line-height: 1;
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #8faa23;
+  margin-bottom: 50px;
 }
 .header-component h1 strong {
   font-size: 86px;
@@ -6527,7 +6622,192 @@ a:hover {
   line-height: 1.42857143;
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #6a4a2a;
+  margin-bottom: 50px;
+}
+.header-component .btn {
+  margin-right: 20px;
+  width: 300px;
+}
+.header-component .product-hldr {
+  text-align: center;
+}
+.header-component.home {
+  margin-bottom: -100px;
 }
 /* -------------------------------------------------------
  * End Header Component  
+ * ------------------------------------------------------- */
+/* 
+ * ------------------------------------------------------- 
+ * Products
+ * ------------------------------------------------------- 
+*/
+.products {
+  position: relative;
+  z-index: 20;
+}
+.products > h2 {
+  font-size: 50px;
+  font-size: 5rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #8faa23;
+  margin: -30px 0 50px;
+  text-transform: uppercase;
+}
+.products .product .col-sm-6 h1 {
+  font-size: 48px;
+  font-size: 4.8rem;
+  font-weight: normal;
+  line-height: 1.1;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+  margin: 0 0;
+}
+.products .product .col-sm-6 h2 {
+  font-size: 100px;
+  font-size: 10rem;
+  font-weight: normal;
+  line-height: 1;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #e97242;
+  margin: 0 0 30px -5px;
+}
+.products .product .col-sm-6 p {
+  color: #8faa23;
+}
+.products .product .col-sm-6 p.value {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.products .product .col-sm-6 p.shipping {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.products .product .col-sm-6 ul {
+  margin: 30px 0 30px -16px;
+}
+.products .product .col-sm-6 ul li {
+  font-size: 20px;
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.7;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+}
+.products .product .col-sm-6 .btn {
+  font-size: 24px;
+  font-size: 2.4rem;
+  letter-spacing: .1rem;
+  width: 300px;
+}
+.products .product .col-sm-9 a {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  width: 470px;
+}
+.products .product .col-sm-9 a img {
+  max-width: 100%;
+}
+.products .product .col-sm-9 a .special {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  top: 146px;
+  left: -90px;
+}
+/* -------------------------------------------------------
+ * End Products  
+ * ------------------------------------------------------- */
+/* 
+ * ------------------------------------------------------- 
+ * Footer
+ * ------------------------------------------------------- 
+*/
+#footer {
+  background-color: #e2e2e2;
+  padding: 125px 0 20px;
+}
+#footer ul {
+  padding-left: 0;
+  list-style: none;
+  margin-left: -5px;
+  margin: 0;
+}
+#footer ul > li {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#footer ul.big {
+  padding-bottom: 80px;
+}
+#footer ul.big li {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 17px;
+  text-transform: uppercase;
+}
+#footer ul.big li:first-child {
+  padding-left: 0;
+}
+#footer ul.big li a {
+  color: #8faa23;
+}
+#footer ul.big li a:hover {
+  color: #79901d;
+}
+#footer ul.small li {
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 17px;
+}
+#footer ul.small li:first-child {
+  padding-left: 0;
+}
+#footer ul.small li a {
+  color: #a0a0a0;
+}
+#footer ul.small li a:hover {
+  color: #494948;
+}
+#footer #logo-footer {
+  position: absolute;
+  top: -52px;
+  right: 0;
+  width: 220px;
+}
+#footer #logo-footer a {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+#footer #logo-footer a:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+#footer #logo-footer img {
+  max-width: 100%;
+}
+/* -------------------------------------------------------
+ * End Footer  
  * ------------------------------------------------------- */
