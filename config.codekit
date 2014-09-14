@@ -2572,6 +2572,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/cut_up\/js\/script.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/cut_up\/js\/script.js",
+		"outputAbbreviatedPath": "\/cut_up\/js\/min\/script-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/cut_up\/less\/bootstrap.less": {
 		"allowInsecureImports": 0,
 		"createSourceMap": 0,
@@ -2669,6 +2680,17 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/log6ix-10807871\/assets\/about-hero.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 0,
+		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/about-hero.png",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/about-hero.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		},
 	"\/log6ix-10807871\/assets\/apple-touch-icon-114x114.png": {
 		"fileType": 32768,
@@ -2846,6 +2868,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/log6ix-10807871\/assets\/bundle_3-odor_elimination.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 319236,
+		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/bundle_3-odor_elimination.png",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/bundle_3-odor_elimination.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/log6ix-10807871\/assets\/favicon-160x160.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -2908,6 +2941,50 @@
 		"initialSize": 234434,
 		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/home-product.png",
 		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/home-product.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/log6ix-10807871\/assets\/indiv-fresh-breath-for-pets.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 97547,
+		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-fresh-breath-for-pets.png",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-fresh-breath-for-pets.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/log6ix-10807871\/assets\/indiv-fresh-food-wash.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 116117,
+		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-fresh-food-wash.png",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-fresh-food-wash.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/log6ix-10807871\/assets\/indiv-hand-sanitizer.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 83845,
+		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-hand-sanitizer.png",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-hand-sanitizer.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/log6ix-10807871\/assets\/indiv-hard-surface-cleaner.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 119919,
+		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-hard-surface-cleaner.png",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-hard-surface-cleaner.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

@@ -10,7 +10,25 @@ Example: the h2 element should have the same size and color in:
 - blog post
 {% endcomment %}
 
-<h1>{{ page.title }}</h1>
-<div class="rte">
-  {{ page.content }}
-</div>
+
+
+	<div class="header-component page">
+		<div class="container">
+			<img src="{{ 'about-hero.png' | asset_url }}" alt="{{ page.title }} | Log6ix">
+		</div>
+	</div>
+	
+	<div class="page-content {{ page.handle }}">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9 col-sm-offset-3">
+					{{ page.content }}
+					{% if page.handle == "about" %}
+						<a href="/" class="btn btn-orange">Shop Our Products</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+

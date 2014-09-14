@@ -6450,6 +6450,16 @@ a {
 a:hover {
   text-decoration: none;
 }
+span[style*="#ff9900"] {
+  color: #e97242 !important;
+}
+span[style*="#00ff00"] {
+  color: #8faa23 !important;
+}
+strong {
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
 /* 
  * ------------------------------------------------------- 
  * Nav
@@ -6583,6 +6593,9 @@ a:hover {
   position: relative;
   z-index: 5;
 }
+.template-page #header {
+  height: 800px;
+}
 #header #logo {
   position: absolute;
   top: 30px;
@@ -6616,6 +6629,9 @@ a:hover {
   position: relative;
   z-index: 10;
 }
+.template-page .header-component {
+  margin-top: -800px;
+}
 .header-component .col-sm-9 {
   padding-top: 230px;
 }
@@ -6632,11 +6648,6 @@ a:hover {
   margin-bottom: 50px;
 }
 .header-component h1 strong {
-  font-size: 86px;
-  font-size: 8.6rem;
-  font-weight: normal;
-  line-height: 1;
-  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #79901d;
 }
 .header-component p {
@@ -6657,6 +6668,9 @@ a:hover {
 }
 .header-component.home {
   margin-bottom: -100px;
+}
+.header-component.page {
+  padding-top: 200px;
 }
 /* -------------------------------------------------------
  * End Header Component  
@@ -6681,7 +6695,7 @@ a:hover {
   text-transform: uppercase;
 }
 .products .product {
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 .products .product:before,
 .products .product:after {
@@ -6745,7 +6759,6 @@ a:hover {
   font-weight: normal;
   line-height: 1.42857143;
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #8faa23 !important;
 }
 .products .product .content ul {
   margin: 30px 0 30px -16px;
@@ -6791,6 +6804,9 @@ a:hover {
   top: 146px;
   left: 10px;
 }
+.products .product.individual {
+  margin-bottom: 50px;
+}
 .products .product.individual .content {
   float: left;
   padding-top: 50px;
@@ -6823,6 +6839,94 @@ a:hover {
 }
 /* -------------------------------------------------------
  * End Products  
+ * ------------------------------------------------------- */
+/* 
+ * ------------------------------------------------------- 
+ * Page Content
+ * ------------------------------------------------------- 
+*/
+.page-content {
+  padding-bottom: 100px;
+}
+.page-content h1 {
+  font-size: 36px;
+  font-size: 3.6rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #e97242;
+}
+.page-content h2 {
+  font-size: 30px;
+  font-size: 3rem;
+  font-weight: normal;
+  line-height: 1.5;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #8faa23;
+  margin-bottom: 30px;
+}
+.page-content h2 a {
+  color: #e97242;
+}
+.page-content h2 a:hover {
+  color: #ce5e31;
+}
+.page-content p {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.5;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+  margin-bottom: 30px;
+}
+.page-content p a {
+  color: #e97242;
+}
+.page-content p a:hover {
+  color: #ce5e31;
+}
+.page-content p + h2,
+.page-content ul + h2 {
+  margin-top: 95px;
+}
+.page-content ul {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.5;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+  margin-bottom: 30px;
+  margin-left: -16px;
+}
+.page-content ul li {
+  margin-bottom: 15px;
+}
+.page-content.about h2 {
+  margin-bottom: 50px;
+}
+.page-content.about p {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1.5;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 50px;
+}
+.page-content.about .btn {
+  font-size: 38px;
+  font-size: 3.8rem;
+  background-image: url("bg-btn-orange-large.png");
+  display: block;
+  margin-top: 10px;
+  padding: 38px 0;
+}
+.page-content.about .btn:hover {
+  background-position: 0px top;
+}
+/* -------------------------------------------------------
+ * End Page Content  
  * ------------------------------------------------------- */
 /* 
  * ------------------------------------------------------- 
