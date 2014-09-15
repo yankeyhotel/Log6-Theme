@@ -63,40 +63,40 @@
 	<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
 		<nav id="nav" class="container">
+			
+			<p id="logo"><a href="/"><img src="{{ 'header-logo.svg' | asset_url }}" alt="Log6ix"></a></p>
+
 			<div class="nav-top">
 				<ul>
 					{% for link in linklists.header-small-nav.links %}
-						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						<li><a href="{{ link.url }}" class="{% if link.active %}active{% endif %}"><span>{{ link.title }}</span></a></li>
 					{% endfor %}
 					<li>
 						{% if shop.customer_accounts_enabled %}
 							{% if customer %}
-								<a href="/account">My Account</a> 
+								<a href="/account"><span>My Account</span></a> 
 							{% else %}
 								{{ 'Login' | customer_login_link }}
 							{% endif %}
 						{% endif %}
 					</li>
-					<li class="social"><a href=""><img src="{{ 'header-facebook.svg' | asset_url }}" alt="Facebook"></a></li>
-					<li class="social last"><a href=""><img src="{{ 'header-twitter.svg' | asset_url }}" alt="Twitter"></a></li>
+					<li class="social"><a href="{{ settings.facebook_url }}" target="_blank"><img src="{{ 'header-facebook.svg' | asset_url }}" alt="Facebook"></a></li>
+					<li class="social last"><a href="{{ settings.twitter_url }}" target="_blank"><img src="{{ 'header-twitter.svg' | asset_url }}" alt="Twitter"></a></li>
 				</ul>
 			</div>
 
 			<div class="nav-bottom">
 				<ul>
 					{% for link in linklists.main-menu.links %}
-						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						<li><a href="{{ link.url }}" class="{% if link.active %}active{% endif %}">{{ link.title }}</a></li>
 					{% endfor %}
+					<li><a data-toggle="modal" data-target="#contact">Contact</a></li>
 					<li class="cart"><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="qty">{{ cart.item_count }}</span></a></li>
 				</ul>
 			</div>
 		</nav>
 
-		<header id="header">
-			<div class="container">
-				<p id="logo"><a href="/"><img src="{{ 'header-logo.svg' | asset_url }}" alt="Log6ix"></a></p>
-			</div>
-		</header>
+		<header id="header"></header>
 
 		
 		{{ content_for_layout }}
@@ -108,6 +108,7 @@
 					{% for link in linklists.footer-big.links %}
 						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
 					{% endfor %}
+					<li><a data-toggle="modal" data-target="#contact">Contact</a></li>
 				</ul>
 				<ul class="small">
 					{% for link in linklists.footer.links %}
@@ -117,7 +118,76 @@
 				<p id="logo-footer"><a href="/"><img src="{{ 'header-logo.svg' | asset_url }}" alt="Log6ix"></a></p>
 			</div>
 		</footer>
+		
 
+		<!-- Modal -->
+		<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contact" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Contact Us</h4>
+						<p>Email us directly at <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></p>
+					</div>
+					<div class="modal-body">
+						{% form 'contact' %}
+
+							{% if form.posted_successfully? %}
+								<div class="successForm feedback">
+									<p>Thanks for contacting us! We'll get back to you as soon as possible.</p>
+								</div>
+							{% endif %}
+
+							{% if form.errors %}
+								<div class="errorForm feedback">
+									<!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+									<p>Oops, sorry. We were unable to submit your inquiry because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and submit again:</p>
+									{% for field in form.errors %}
+										<p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+									{% endfor %}
+								</div>
+							{% endif %}
+
+							<div id="contactFormWrapper">
+								
+								<div class="left">
+									<div class="form-group">
+										<label class="sr-only" for="contactFormName">Name:</label>
+										<input type="text" class="form-control"  id="contactFormName" name="contact[name]" placeholder="Name">
+									</div>
+								</div>
+
+								<div class="right">
+									<div class="form-group">
+										<label class="sr-only" for="contactFormEmail">Email:</label>
+										<input type="email" class="form-control"  id="contactFormEmail" name="contact[email]" placeholder="Email">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="sr-only" for="contactFormMessage">Email:</label>
+									<textarea rows="5" class="form-control" id="contactFormMessage" name="contact[body]" placeholder="Your Message"></textarea>
+								</div>
+								
+								<div class="left">
+									<img src="{{ 'contact-form-logo.gif' | asset_url }}" alt="Zavada Scientific">
+								</div>
+
+								<div class="right">
+									<button type="submit" id="contactFormSubmit" value="SEND" class="btn btn-orange">Submit</button>
+								</div>
+
+							</div><!-- contactWrapper -->
+
+						{% endform %}
+					</div>
+					<div class="modal-footer">
+						<p>3321 Essex Dr. Richardson, TX 75082</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		{{ 'bootstrap.min.js'  | asset_url | script_tag }}
 		{{ 'shop.js'  | asset_url | script_tag }}
 	</body>
 </html>

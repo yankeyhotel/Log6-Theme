@@ -11,7 +11,8 @@ var switchImage = function(newImageSrc, newImage, mainImageDomEl) {
 
 
 jQuery(function($) {
-
+	
+	$("#customer_login_link").wrapInner("<span>");
 	
 	/* Scroll to hash */
 	/*==========================*/
@@ -65,7 +66,7 @@ jQuery(function($) {
 		// find all the values
 		$("span[style*='"+ red +"']").each(function(){
 			var value = $(this).text();
-			$(this).parent().parent().prepend("<p class='value'>"+ value +"</p>");
+			$(this).closest(".content").find("h1").before("<p class='value'>"+ value +"</p>");
 			$(this).remove();
 		});
 

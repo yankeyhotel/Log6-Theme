@@ -6446,6 +6446,7 @@ a {
   -webkit-transition: 0.3s ease-out color;
   -o-transition: 0.3s ease-out color;
   transition: 0.3s ease-out color;
+  cursor: pointer !important;
 }
 a:hover {
   text-decoration: none;
@@ -6456,9 +6457,16 @@ span[style*="#ff9900"] {
 span[style*="#00ff00"] {
   color: #8faa23 !important;
 }
+span[style*="#0000ff"] {
+  color: #6a4a2a !important;
+}
 strong {
   font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
+}
+input,
+button {
+  outline: none !important;
 }
 /* 
  * ------------------------------------------------------- 
@@ -6469,6 +6477,26 @@ strong {
   height: 110px;
   position: relative;
   z-index: 100;
+}
+#nav #logo {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  width: 220px;
+}
+#nav #logo a {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+#nav #logo a:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+#nav #logo img {
+  max-width: 100%;
 }
 #nav ul {
   padding-left: 0;
@@ -6528,10 +6556,18 @@ strong {
   display: block;
   padding: 7px 14px 9px;
 }
-#nav .nav-top a:hover {
-  background-color: rgba(143, 170, 35, 0.8);
-  border-color: #8faa23;
-  color: #ffffff;
+#nav .nav-top a span {
+  -webkit-transition: border-color 0.3s ease-out;
+  -o-transition: border-color 0.3s ease-out;
+  transition: border-color 0.3s ease-out;
+  border-bottom: 4px solid transparent;
+  padding-bottom: 4px;
+}
+#nav .nav-top a:hover span {
+  border-bottom-color: #e97242;
+}
+#nav .nav-top a.active span {
+  border-bottom-color: #e97242;
 }
 #nav .nav-bottom {
   padding-top: 20px;
@@ -6545,11 +6581,11 @@ strong {
 #nav .nav-bottom li.cart .glyphicon {
   font-size: 22px;
   font-size: 2.2rem;
-  color: #6a4a2a;
-  top: 4px;
   -webkit-transition: color 0.3s ease-out;
   -o-transition: color 0.3s ease-out;
   transition: color 0.3s ease-out;
+  color: #6a4a2a;
+  top: 4px;
 }
 #nav .nav-bottom li.cart .qty {
   font-size: 12px;
@@ -6569,10 +6605,19 @@ strong {
   color: #8faa23;
 }
 #nav .nav-bottom a {
+  -webkit-transition: border-color .3s ease-out, color .3s ease-out;
+  -o-transition: border-color .3s ease-out, color .3s ease-out;
+  transition: border-color .3s ease-out, color .3s ease-out;
+  border-bottom: 6px solid transparent;
   color: #e97242;
+  padding-bottom: 3px;
 }
 #nav .nav-bottom a:hover {
+  border-color: #8faa23;
   color: #ce5e31;
+}
+#nav .nav-bottom a.active {
+  border-color: #8faa23;
 }
 /* -------------------------------------------------------
  * End Nav  
@@ -6595,26 +6640,6 @@ strong {
 }
 .template-page #header {
   height: 800px;
-}
-#header #logo {
-  position: absolute;
-  top: 30px;
-  left: 10px;
-  width: 220px;
-}
-#header #logo a {
-  opacity: 1;
-  filter: alpha(opacity=100);
-  -webkit-transition: opacity 0.3s ease-out;
-  -o-transition: opacity 0.3s ease-out;
-  transition: opacity 0.3s ease-out;
-}
-#header #logo a:hover {
-  opacity: 0.8;
-  filter: alpha(opacity=80);
-}
-#header #logo img {
-  max-width: 100%;
 }
 /* -------------------------------------------------------
  * End Header  
@@ -6837,6 +6862,50 @@ strong {
 .products .product.individual .img img {
   max-width: 100%;
 }
+.header-component .products {
+  height: 920px;
+  padding-top: 250px;
+}
+.header-component .products .col-sm-6,
+.header-component .products .col-sm-9 {
+  padding: 0;
+}
+.header-component .products .content #product-description p {
+  font-size: 16px;
+  font-size: 1.6rem;
+  display: block !important;
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}
+.header-component .products .content .btn {
+  vertical-align: top;
+  width: 300px;
+}
+.header-component .products .img {
+  margin-left: -50px;
+}
+.product-page + .products h2 {
+  margin-top: 50px;
+}
+#product-add {
+  margin-top: 20px;
+}
+#product-add input[type="number"] {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #6a4a2a;
+  padding: 25px 20px;
+  text-align: center;
+  width: 100px;
+}
 /* -------------------------------------------------------
  * End Products  
  * ------------------------------------------------------- */
@@ -7009,3 +7078,169 @@ strong {
 /* -------------------------------------------------------
  * End Footer  
  * ------------------------------------------------------- */
+/* 
+  * ------------------------------------------------------- 
+  * Contact Form
+  * ------------------------------------------------------- 
+ */
+.modal-backdrop {
+  background-color: #8faa23;
+}
+.modal-backdrop.in {
+  opacity: 0.85;
+  filter: alpha(opacity=85);
+}
+#contact .modal-dialog {
+  width: 860px;
+}
+#contact .modal-content {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+#contact .modal-header {
+  border: none;
+  padding: 40px 80px;
+}
+#contact .modal-header:before,
+#contact .modal-header:after {
+  content: " ";
+  display: table;
+}
+#contact .modal-header:after {
+  clear: both;
+}
+#contact .modal-header:before,
+#contact .modal-header:after {
+  content: " ";
+  display: table;
+}
+#contact .modal-header:after {
+  clear: both;
+}
+#contact .modal-header h4 {
+  font-size: 36px;
+  font-size: 3.6rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #8faa23;
+  float: left;
+  padding-top: 10px;
+  width: 335px;
+}
+#contact .modal-header p {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+  float: right;
+  width: 335px;
+}
+#contact .modal-header p a {
+  color: #e97242;
+}
+#contact .modal-header p a:hover {
+  color: #ce5e31;
+}
+#contact .modal-body {
+  border: none;
+  padding: 0 80px 40px;
+}
+#contact .modal-body:before,
+#contact .modal-body:after {
+  content: " ";
+  display: table;
+}
+#contact .modal-body:after {
+  clear: both;
+}
+#contact .modal-body:before,
+#contact .modal-body:after {
+  content: " ";
+  display: table;
+}
+#contact .modal-body:after {
+  clear: both;
+}
+#contact #contactFormWrapper:before,
+#contact #contactFormWrapper:after {
+  content: " ";
+  display: table;
+}
+#contact #contactFormWrapper:after {
+  clear: both;
+}
+#contact #contactFormWrapper:before,
+#contact #contactFormWrapper:after {
+  content: " ";
+  display: table;
+}
+#contact #contactFormWrapper:after {
+  clear: both;
+}
+#contact #contactFormWrapper .left {
+  float: left;
+  width: 335px;
+}
+#contact #contactFormWrapper .right {
+  float: right;
+  width: 335px;
+}
+#contact #contactFormWrapper .form-group {
+  margin-bottom: 30px;
+  width: 100%;
+}
+#contact #contactFormWrapper .form-control {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #6a4a2a;
+  padding: 30px 20px;
+}
+#contact #contactFormWrapper .form-control::-moz-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+  opacity: 1;
+}
+#contact #contactFormWrapper .form-control:-ms-input-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+}
+#contact #contactFormWrapper .form-control::-webkit-input-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+}
+#contact #contactFormWrapper textarea.form-control {
+  padding: 20px;
+}
+#contact #contactFormWrapper .btn {
+  font-size: 20px;
+  font-size: 2rem;
+  margin-top: 10px;
+  width: 100%;
+}
+#contact #contactFormWrapper .btn:before {
+  z-index: 1;
+}
+#contact .modal-footer {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #6a4a2a;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+}
+/* -------------------------------------------------------
+  * End Contact Form  
+  * ------------------------------------------------------- */

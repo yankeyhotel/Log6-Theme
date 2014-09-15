@@ -1,0 +1,74 @@
+	<div class="products container">
+		
+		<h2 id="bundles">{% if template == "product" %}Other {% endif %}Bundles</h2>
+
+		<div class="row">
+			{% assign current_handle = product.handle %}
+
+			{% for product in collections.bundles.products %}
+
+				{% if product.handle != current_handle %}
+					<section class="product bundle">
+						<div class="col-sm-6">
+							<div class="content">
+								<h1>{{ product.title }}</h1>
+								<h2>${{ product.price | money_without_currency }}</h2>
+								{{ product.description }}
+
+								{% if product.available == false %}
+									<a href="{{ product.url }}" class="btn btn-orange">Sold Out!</a>
+								{% else %}
+									<a href="{{ product.url }}" class="btn btn-orange">Buy Now!</a>
+								{% endif %}
+
+							</div>
+						</div>
+						<div class="col-sm-9">
+							<div class="img">
+								<a href="{{ product.url }}" title="{{ product.title }}">
+									<img class="{{ product.handle }}" src="{{ product.featured_image | product_img_url: 'master' }}" alt="{{ product.title }}">
+									<img class="special" src="{{ 'products-special-cta.svg' | asset_url }}" alt="Special">
+								</a>
+							</div>
+						</div>
+					</section>
+				{% endif %}
+
+			{% endfor %}
+
+		</div>
+
+
+		<h2 id="individual-products">Individual Products</h2>
+			
+		<div class="row">
+			
+			{% for product in collections.individual-products.products %}
+
+				{% if product.handle != current_handle %}
+					<div class="col-sm-7 {% cycle '', 'col-sm-offset-1' %}">
+						<section class="product individual">
+							<div class="content">
+								<h1>{{ product.title }}</h1> 
+								<h2>${{ product.price | money_without_currency }}</h2>
+								
+								{{ product.description }}
+
+								{% if product.available == false %}
+									<a href="{{ product.url }}" class="btn btn-orange">Sold Out!</a>
+								{% else %}
+									<a href="{{ product.url }}" class="btn btn-orange">Buy Now!</a>
+								{% endif %}
+							</div>
+							<div class="img">
+								<img class="{{ product.handle }}" src="{{ product.featured_image | product_img_url: 'master' }}" alt="{{ product.title }}">
+							</div>
+						</section>
+					</div>
+				{% endif %}
+				
+			{% endfor %}
+
+		</div>
+
+	</div><!-- /.products.container -->
