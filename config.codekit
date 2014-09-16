@@ -2603,6 +2603,26 @@
 		"strictMath": 0,
 		"strictUnits": 0
 		},
+	"\/cut_up\/less\/checkout.less": {
+		"allowInsecureImports": 0,
+		"createSourceMap": 0,
+		"disableJavascript": 0,
+		"fileType": 1,
+		"ieCompatibility": 0,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/cut_up\/less\/checkout.less",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/checkout.css.liquid",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 2,
+		"relativeURLS": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"strictImports": 0,
+		"strictMath": 0,
+		"strictUnits": 0
+		},
 	"\/cut_up\/less\/log6ix-icons.css": {
 		"fileType": 16,
 		"ignore": 0,
