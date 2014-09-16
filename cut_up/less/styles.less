@@ -185,7 +185,8 @@
 		z-index: 5;
 
 		.template-page & { height: 800px; }
-		.template-cart & { height: 200px; }
+		.template-cart,
+		.template-customers-login & { height: 200px; }
 	}// #header
 /* -------------------------------------------------------
  * End Header  
@@ -887,6 +888,157 @@
 /* -------------------------------------------------------
  * End Cart  
  * ------------------------------------------------------- */
+
+
+
+ /* 
+  * ------------------------------------------------------- 
+  * Customer Pages
+  * ------------------------------------------------------- 
+ */
+
+	#customer_hldr {
+		margin-bottom: 74px;
+		padding: 74px 0 124px;
+		
+		.span5 {
+			/* border: 1px solid red; */
+		}
+		
+		h2 {
+			.sans-bold(24);
+			color: @orange;
+			small {
+				.sans-book(16);
+			}
+		}
+		
+		input[type="email"],
+		input[type="password"] {
+			padding-left: 20px;
+			padding-right: 20px;
+			width: 336px;
+		}
+		
+		#forgot_password {
+			margin-bottom: 20px;
+		}
+		
+		.button { 
+			padding-left: 0;
+			padding-right: 0;
+			width: 176px; 
+		}
+		.button-orange { margin-right: 20px; }
+		
+		
+		#customer_sidebar {
+			h5 {
+				.sans-bold(16);
+				color: @orange;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+			}
+			p {
+				margin-bottom: 5px;
+			}
+		}// #customer_sidebar
+		
+		
+		
+		#customer_orders, {
+			table {
+				width: 100%;
+				th {
+					.sans-bold(16);
+					padding: 16px 20px 20px 0;
+					text-align: left;
+					text-transform: uppercase;
+				}
+				td {
+					border-top: 1px solid @gray-border;
+					padding: 20px 20px 20px 0;
+				}
+			}
+		}// #customer_orders
+		
+		
+		
+		#address_tables,
+		#add_address {
+			margin-bottom: 74px;
+			
+			h4 {
+				.sans-bold(16);
+				color: @orange;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+			}
+			
+			p {
+				margin-bottom: 5px;
+			}
+			
+			.customer_address_table {
+				margin-bottom: 34px;
+				td.value {
+					padding-left: 20px;
+					input[type="checkbox"] { margin: 0; }
+					input[type="text"] {
+						padding-left: 20px;
+						padding-right: 20px;
+					}
+				}
+			}
+		}// #address_tables
+		
+		.alert-danger { 
+			border: none;
+			text-shadow: 0 1px 0 rgba(0,0,0,.2); 
+		}
+		
+		#order_address {
+			h5 {
+				.sans-bold(16);
+				color: @orange;
+				text-transform: uppercase;
+			}
+			p {
+				margin-bottom: 5px;
+			}
+			#order_payment { margin-bottom: 34px; }
+		}// #order_address
+		
+		table#order_details {
+			width: 100%;
+			th {
+				.sans-bold(16);
+				padding: 16px 20px 20px 0;
+				text-align: left;
+				text-transform: uppercase;
+			}
+			td {
+				border-top: 1px solid @gray-border;
+				padding: 20px 20px 20px 0;
+				&.quantity 	{ text-align: center; }
+				&.total			{ text-align: left; }
+			}
+			tfoot {
+				.order_total td { 
+					background-color: @white; 
+					border-top: none;
+				}
+				td {
+					padding-right: 20px;
+					text-align: right;
+				}
+			}
+		}
+		
+	}// #customer_hldr
+ /* -------------------------------------------------------
+  * End Customer Pages  
+  * ------------------------------------------------------- */
 
 
 
