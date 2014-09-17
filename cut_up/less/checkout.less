@@ -51,12 +51,14 @@ body, #main, #container, #header, #footer {
 	font-weight: normal !important;
 }
 
-body {
+html {
 	background-image: url('{{ "bg-header.jpg" | asset_url }}' );
 	background-position: center top;
 	-moz-background-size: cover;
 	background-size: cover;
 	background-repeat: no-repeat;
+	height: 100%;
+	width: 100%;
 }
 
 
@@ -137,7 +139,8 @@ body {
 #content {
 	
 	input[type="text"],
-	input[type="email"] {
+	input[type="email"],
+	input[type="password"] {
 		background-color: @white;
 		border: 1px solid @gray-border;
 		color: @coffee;
@@ -363,19 +366,64 @@ body {
 
 	#create-account-btn {
 		.strong();
-			background-color: @orange;
-			border: none;
-			color: @white;
-			display: inline-block;
-			font-size: 20px;
-			margin-right: 20px;
-			padding: 17px 26px 20px;
-			position: relative;
-			text-align: center;
-			text-transform: uppercase;
-			width: 100%;
+		background-color: @orange;
+		border: none;
+		color: @white;
+		display: inline-block;
+		font-size: 20px;
+		margin-right: 20px;
+		padding: 17px 26px 20px;
+		position: relative;
+		text-align: center;
+		text-transform: uppercase;
+		width: 100%;
 	}
 	
+}
+
+
+#create-account {
+	td.lbl {
+		padding: 5px 0;
+		vertical-align: middle;
+	}
+
+	td.lbl + td {
+		padding: 5px 0;
+		width: 50%;
+	}
+
+	label {
+		.strong();
+		font-weight: normal;
+	}
+
+	input[type="password"] {
+		width: 200px;
+	}
+
+	input[name="commit"] {
+		.strong();
+		background-color: @orange;
+		border: none;
+		color: @white;
+		display: inline-block;
+		font-size: 20px;
+		margin-right: 20px;
+		padding: 17px 26px 20px;
+		position: relative;
+		text-align: center;
+		text-transform: uppercase;
+		width: 100%;
+	}
+}
+
+.flash.notice {
+	.strong();
+	background: transparent;
+	border: none;
+	color: @orange;
+	padding: 0;
 }
 
 

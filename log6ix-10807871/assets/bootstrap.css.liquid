@@ -6642,7 +6642,10 @@ button {
   height: 800px;
 }
 .template-cart #header,
-.template-customers-login #header {
+.template-customers-login #header,
+.template-customers-account #header,
+.template-customers-order #header,
+.template-customers-addresses #header {
   height: 200px;
 }
 /* -------------------------------------------------------
@@ -6889,6 +6892,9 @@ button {
 }
 .header-component .products .img {
   margin-left: -50px;
+}
+#product-variants {
+  display: none;
 }
 .product-page + .products h2 {
   margin-top: 50px;
@@ -7538,40 +7544,82 @@ button {
   margin-bottom: 74px;
   padding: 74px 0 124px;
 }
-#customer_hldr .span5 {
-  /* border: 1px solid red; */
-}
 #customer_hldr h2 {
-  font-size: 24px;
-  font-size: 2.4rem;
+  font-size: 30px;
+  font-size: 3rem;
   font-weight: normal;
   line-height: 1.42857143;
   font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #e97242;
+  margin-bottom: 30px;
+  text-align: left;
 }
 #customer_hldr h2 small {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+}
+#customer_hldr a {
+  color: #e97242;
+}
+#customer_hldr a:hover {
+  color: #ce5e31;
+}
+#customer_hldr input[type="email"],
+#customer_hldr input[type="password"] {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #6a4a2a;
+  padding: 30px 20px;
+  text-align: center;
+}
+#customer_hldr input[type="email"]::-moz-placeholder,
+#customer_hldr input[type="password"]::-moz-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+  opacity: 1;
+}
+#customer_hldr input[type="email"]:-ms-input-placeholder,
+#customer_hldr input[type="password"]:-ms-input-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+}
+#customer_hldr input[type="email"]::-webkit-input-placeholder,
+#customer_hldr input[type="password"]::-webkit-input-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+}
+#customer_hldr .forgot_password {
   font-size: 16px;
   font-size: 1.6rem;
   font-weight: normal;
   line-height: 1.42857143;
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 30px 0;
+  text-align: center;
 }
-#customer_hldr input[type="email"],
-#customer_hldr input[type="password"] {
-  padding-left: 20px;
-  padding-right: 20px;
-  width: 336px;
+#customer_hldr .forgot_password a {
+  color: #e97242;
 }
-#customer_hldr #forgot_password {
-  margin-bottom: 20px;
+#customer_hldr .forgot_password a:hover {
+  color: #ce5e31;
 }
-#customer_hldr .button {
-  padding-left: 0;
-  padding-right: 0;
-  width: 176px;
+#customer_hldr .btn {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 300px;
 }
-#customer_hldr .button-orange {
-  margin-right: 20px;
+#customer_hldr #customer_sidebar {
+  padding-top: 118px;
 }
 #customer_hldr #customer_sidebar h5 {
   font-size: 16px;
@@ -7580,11 +7628,23 @@ button {
   line-height: 1.42857143;
   font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #e97242;
-  letter-spacing: 2px;
   text-transform: uppercase;
 }
 #customer_hldr #customer_sidebar p {
+  color: #6a4a2a;
   margin-bottom: 5px;
+}
+#customer_hldr #recover-password .btn {
+  margin: 30px auto;
+}
+#customer_hldr #recover-password p {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 0 30px;
+  text-align: center;
 }
 #customer_hldr #customer_orders table {
   width: 100%;
@@ -7595,17 +7655,21 @@ button {
   font-weight: normal;
   line-height: 1.42857143;
   font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
   padding: 16px 20px 20px 0;
   text-align: left;
   text-transform: uppercase;
 }
 #customer_hldr #customer_orders table td {
+  font-size: 16px;
+  font-size: 1.6rem;
   border-top: 1px solid #b3b3b3;
+  color: #6a4a2a;
   padding: 20px 20px 20px 0;
 }
 #customer_hldr #address_tables,
 #customer_hldr #add_address {
-  margin-bottom: 74px;
+  margin: 30px 0;
 }
 #customer_hldr #address_tables h4,
 #customer_hldr #add_address h4 {
@@ -7615,11 +7679,11 @@ button {
   line-height: 1.42857143;
   font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #e97242;
-  letter-spacing: 2px;
   text-transform: uppercase;
 }
 #customer_hldr #address_tables p,
 #customer_hldr #add_address p {
+  color: #6a4a2a;
   margin-bottom: 5px;
 }
 #customer_hldr #address_tables .customer_address_table,
@@ -7639,9 +7703,15 @@ button {
   padding-left: 20px;
   padding-right: 20px;
 }
+#customer_hldr #add_address {
+  margin-top: -12px !important;
+}
 #customer_hldr .alert-danger {
   border: none;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+#customer_hldr #order_address {
+  padding-top: 6px;
 }
 #customer_hldr #order_address h5 {
   font-size: 16px;
@@ -7667,14 +7737,25 @@ button {
   font-weight: normal;
   line-height: 1.42857143;
   font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
   padding: 16px 20px 20px 0;
   text-align: left;
   text-transform: uppercase;
 }
+#customer_hldr table#order_details th.center,
+#customer_hldr table#order_details th.quantity {
+  text-align: center;
+}
+#customer_hldr table#order_details th.total {
+  text-align: left;
+}
 #customer_hldr table#order_details td {
+  font-size: 16px;
+  font-size: 1.6rem;
   border-top: 1px solid #b3b3b3;
   padding: 20px 20px 20px 0;
 }
+#customer_hldr table#order_details td.center,
 #customer_hldr table#order_details td.quantity {
   text-align: center;
 }
@@ -7682,12 +7763,72 @@ button {
   text-align: left;
 }
 #customer_hldr table#order_details tfoot .order_total td {
-  background-color: #ffffff;
-  border-top: none;
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
 }
 #customer_hldr table#order_details tfoot td {
   padding-right: 20px;
   text-align: right;
+}
+#customer_hldr form td {
+  vertical-align: middle;
+}
+#customer_hldr form .lbl label {
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+  font-weight: normal;
+  width: 100px;
+}
+#customer_hldr form .value {
+  color: #6a4a2a;
+}
+#customer_hldr form select {
+  margin: 20px 0;
+  width: 350px;
+}
+#customer_hldr form input[type="text"],
+#customer_hldr form input[type="email"],
+#customer_hldr form input[type="password"] {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #6a4a2a;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  width: 350px;
+}
+#customer_hldr form input[type="text"]::-moz-placeholder,
+#customer_hldr form input[type="email"]::-moz-placeholder,
+#customer_hldr form input[type="password"]::-moz-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+  opacity: 1;
+}
+#customer_hldr form input[type="text"]:-ms-input-placeholder,
+#customer_hldr form input[type="email"]:-ms-input-placeholder,
+#customer_hldr form input[type="password"]:-ms-input-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+}
+#customer_hldr form input[type="text"]::-webkit-input-placeholder,
+#customer_hldr form input[type="email"]::-webkit-input-placeholder,
+#customer_hldr form input[type="password"]::-webkit-input-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+}
+#customer_hldr form .btn {
+  display: inline-block;
 }
 /* -------------------------------------------------------
   * End Customer Pages  

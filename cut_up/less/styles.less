@@ -186,7 +186,11 @@
 
 		.template-page & { height: 800px; }
 		.template-cart &,
-		.template-customers-login & { height: 200px; }
+		.template-customers-login &,
+		.template-customers-account &,
+		.template-customers-order &,
+		.template-customers-addresses & { height: 200px; }
+
 	}// #header
 /* -------------------------------------------------------
  * End Header  
@@ -413,7 +417,8 @@
 		}// .header-component &
 
 	}// .products
-
+	
+	#product-variants { display: none; }
 
 	.product-page + .products h2 {
 		margin-top: 50px;
@@ -900,82 +905,113 @@
 	#customer_hldr {
 		margin-bottom: 74px;
 		padding: 74px 0 124px;
-		
-		.span5 {
-			/* border: 1px solid red; */
-		}
-		
+
 		h2 {
-			.sans-bold(24);
+			.sans-bold(30);
 			color: @orange;
+			margin-bottom: 30px;
+			text-align: left;
 			small {
-				.sans-book(16);
+				.sans-book(18);
+				color: @coffee;
 			}
+		}
+
+		a {
+			color: @orange;
+			&:hover { color: @orange-dark; }
 		}
 		
 		input[type="email"],
 		input[type="password"] {
-			padding-left: 20px;
-			padding-right: 20px;
-			width: 336px;
+			.hex-to-rgba(@coffee, .65);
+			.placeholder(@rgba);
+			.sans-book(24);
+			background-color: @gray-middle;
+			border: none;
+			border-radius: 0;
+			.box-shadow(none);
+			color: @coffee;
+			padding: 30px 20px;
+			text-align: center;
 		}
 		
-		#forgot_password {
-			margin-bottom: 20px;
+		.forgot_password {
+			.sans-book(16);
+			margin: 30px 0;
+			text-align: center;
+			a {
+				color: @orange;
+				&:hover { color: @orange-dark; }
+			}
 		}
 		
-		.button { 
-			padding-left: 0;
-			padding-right: 0;
-			width: 176px; 
+		.btn { 
+			display: block;
+			margin: 0 auto;
+			text-align: center;
+			width: 300px; 
 		}
-		.button-orange { margin-right: 20px; }
 		
 		
 		#customer_sidebar {
+			padding-top: 118px;
 			h5 {
 				.sans-bold(16);
 				color: @orange;
-				letter-spacing: 2px;
 				text-transform: uppercase;
 			}
 			p {
+				color: @coffee;
 				margin-bottom: 5px;
 			}
 		}// #customer_sidebar
+
+		#recover-password {
+			.btn {
+				margin: 30px auto;
+			}
+			p {
+				.sans-book(18);
+				padding: 0 0 30px;
+				text-align: center;
+			}
+		}
 		
 		
 		
-		#customer_orders, {
+		#customer_orders {
 			table {
 				width: 100%;
 				th {
 					.sans-bold(16);
+					color: @coffee;
 					padding: 16px 20px 20px 0;
 					text-align: left;
 					text-transform: uppercase;
 				}
 				td {
+					.rem-calc(16);
 					border-top: 1px solid @gray-border;
+					color: @coffee;
 					padding: 20px 20px 20px 0;
 				}
 			}
 		}// #customer_orders
 		
-		
-		
+
 		#address_tables,
 		#add_address {
-			margin-bottom: 74px;
+			margin: 30px 0;
 			
 			h4 {
 				.sans-bold(16);
 				color: @orange;
-				letter-spacing: 2px;
 				text-transform: uppercase;
 			}
 			
 			p {
+				color: @coffee;
 				margin-bottom: 5px;
 			}
 			
@@ -991,6 +1027,10 @@
 				}
 			}
 		}// #address_tables
+
+		#add_address {
+			margin-top: -12px !important;
+		}
 		
 		.alert-danger { 
 			border: none;
@@ -998,6 +1038,7 @@
 		}
 		
 		#order_address {
+			padding-top: 6px;
 			h5 {
 				.sans-bold(16);
 				color: @orange;
@@ -1013,26 +1054,72 @@
 			width: 100%;
 			th {
 				.sans-bold(16);
+				color: @coffee;
 				padding: 16px 20px 20px 0;
 				text-align: left;
 				text-transform: uppercase;
+				&.center, &.quantity { text-align: center; }
+				&.total			{ text-align: left; }
 			}
 			td {
+				.rem-calc(16);
 				border-top: 1px solid @gray-border;
 				padding: 20px 20px 20px 0;
-				&.quantity 	{ text-align: center; }
+				&.center, &.quantity { text-align: center; }
 				&.total			{ text-align: left; }
 			}
 			tfoot {
 				.order_total td { 
-					background-color: @white; 
-					border-top: none;
+					.sans-bold(24);
+					color: @coffee;
 				}
 				td {
 					padding-right: 20px;
 					text-align: right;
 				}
 			}
+		}
+
+		form {
+			
+			td {
+				vertical-align: middle;
+			}
+
+			.lbl label {
+				.sans-bold(16);
+				color: @coffee;
+				font-weight: normal;
+				width: 100px;
+			}
+
+			.value { color: @coffee; }
+			
+			select { 
+				margin: 20px 0; 
+				width: 350px;
+			}
+
+			input[type="text"],
+			input[type="email"],
+			input[type="password"] {
+				.hex-to-rgba(@coffee, .65);
+				.placeholder(@rgba);
+				.sans-book(18);
+				background-color: @gray-middle;
+				border: none;
+				border-radius: 0;
+				.box-shadow(none);
+				color: @coffee;
+				margin-bottom: 10px;
+				padding: 10px 20px;
+				width: 350px;
+			}
+			
+			.btn {
+				display: inline-block;
+			}
+
 		}
 		
 	}// #customer_hldr

@@ -1,78 +1,63 @@
 
+{% layout settings.customer_layout %}
 <div id="customer_hldr">
 	<div class="container">
-
-	{% layout settings.customer_layout %}
-  	
-  	<div class="row">
-  		
-			<div class="span5 offset1">
+		<div class="row">
 			
-				<h2 class="title">Customer Login</h2>
+			<div class="col-sm-7 col-sm-offset-4">
 				
-				{% form 'customer_login' %}
-					{{ form.errors | default_errors }}
+				<div id="customer">
+					<h2>Customer Login</h2>
 				
-					<div id="login_email" class="clearfix large_form">
-						<label for="customer_email" class="login">Email Address</label>
-						<input type="email" value="" name="customer[email]" id="customer_email" class="large" size="30" placeholder="Email Address"/>
-					</div>
+					{% form 'customer_login' %}
+
+						{{ form.errors | default_errors }}			
+
+						<div id="login_email" class="form-group">
+							<label for="customer_email" class="sr-only">Email address</label>
+							<input type="email" class="form-control"name="customer[email]" id="customer_email"  placeholder="Enter email">
+						</div>
 				
-					{% if form.password_needed %}		      	
-						<div id="login_password" class="clearfix large_form">
-							<label for="customer_password" class="login">Password</label>
-							<input type="password" value="" name="customer[password]" id="customer_password" class="large password" size="16" placeholder="Password" />
-							<div id="forgot_password">
+						{% if form.password_needed %}
+							<div id="login_password" class="form-group">
+								<label for="customer_password" class="sr-only">Password</label>
+								<input type="password" class="form-control" name="customer[password]" id="customer_password" placeholder="Password">
+							</div>
+
+							<div class="forgot_password">
 								<a href="#" onclick="showRecoverPasswordForm();return false;">Forgot your password?</a>
 							</div>
-						</div>
-					{% endif %}
+						{% endif %}
 				
-					<div class="action_bottom">
-						<a href="{{ shop.url }}" class="button button-orange">Return to Store</a>
-						<button class="button button-blue" type="submit" >Sign In</button>
-					</div>
+						<button class="btn btn-green" type="submit">Sign In</button>
 				
-				{% endform %}
+					{% endform %}
+				</div><!-- #customer -->
 				
 				<div id="recover-password" style='display:none'>
-					<div class="template_header">
-						<h2 class="title">Reset Password</h2>
-						<p class="note">We will send you an email to reset your password.</p>
-					</div>
 					
+					<h2>Reset Password</h2>
+					<p>We will send you an email to reset your password.</p>
+
 					{% form 'recover_customer_password' %}
 						{{ form.errors | default_errors }}
 					
 						<div id="recover_email" class="clearfix large_form">
-							<label for="email" class="large">Email</label>
-							<input type="email" value="" size="30" name="email" id="recover-email" class="large" placeholder="Email Address" />
+							<label for="email" class="sr-only">Email</label>
+							<input type="email" name="email" id="recover-email" class="form-control" placeholder="Email Address" />
 						</div>
-						<div class="action_bottom">
-							<button type="submit" class="button button-blue">Submit</button>
-							<span class="note">or <a href="#" onclick="hideRecoverPasswordForm();return false;">Cancel</a></span>
+
+						<button class="btn btn-green" type="submit">Submit</button>
+
+						<div class="forgot_password">
+							<a href="#" onclick="hideRecoverPasswordForm();return false;">Cancel</a>
 						</div>
 						
 					{% endform %}
 			  
 				</div><!-- /#recover-password -->
 				
-			</div><!-- /.span5 -->
-			
-			
-			<div class="span5 offset1">
-				{% if shop.checkout.guest_login %}
-					<div id="guest">
-						<div class="template_header">
-							<h2 class="title">Guest Login</h3>
-						</div>
-						{% form 'guest_login' %}
-							<button class="button button-blue" type="submit">Continue as Guest</button>
-						{% endform %}
-					</div>
-				{% endif %}
-			</div>
-			
+			</div><!-- /.col-sm-7.col-sm-offset- -->
 			
 		</div><!-- /.row -->
 
@@ -82,13 +67,13 @@
 
 <script type="text/javascript">
   function showRecoverPasswordForm() {
-    document.getElementById('recover-password').style.display = 'inline-block';
+    document.getElementById('recover-password').style.display = 'block';
     document.getElementById('customer').style.display='none';
   }
 
   function hideRecoverPasswordForm() {
     document.getElementById('recover-password').style.display = 'none';
-    document.getElementById('customer').style.display = 'inline-block';
+    document.getElementById('customer').style.display = 'block';
   }
 
   if (window.location.hash == '#recover') { showRecoverPasswordForm() }
