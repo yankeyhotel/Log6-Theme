@@ -1,0 +1,862 @@
+{% comment %}
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// Log 6ix EMAIL TEMPLATE MASTER
+// This is the master for the email notification templates for Log 6ix. Set the
+// variable "notification_type" below to the corresponding number for the type of
+// notification you need:
+//
+// 1: Order Confirmation
+// 2: Refund Notification
+// 3: Shipping Confirmation
+// 4: Shipping Update
+// 5: Customer Account Activation
+// 6: Customer Account Welcome
+// 7: Customer Password Reset
+// 8: Gift Card Notification
+// 9: New Order Notification
+// 10: Order Cancelled
+// 11: Order Cancelled
+//
+// Once you set "notification_type", copy this entire page of code, then go to:
+//
+// http://templates.mailchimp.com/resources/inline-css/
+//
+// ...and use the CSS Inliner to move the style sheet inline.  Take the resulting,
+// processed code and paste it in the proper notification template editor in Shopify.
+//
+///////////////////////////////////////////////////////////////////////////////////////
+{% endcomment %}
+
+{% assign notification_type = 10 %}
+
+
+
+{% case notification_type %}
+
+{% when 1 %}
+    {% assign ttl = "Thank You For Your Order" %}
+    {% assign ttl_img = "email_title_thankyou.jpg" %}
+
+    {% capture body_copy %}
+
+        <h2>Your order has been received!</h2>
+        <p>Order: <a href="{{ shop.url }}/account/orders/{{ id }}">{{ name }}</a> Date: {{ date | date: "%m/%d/%Y" }}</p>
+
+        {% for transaction in transactions %}
+            {% if transaction.kind == "authorization" or transaction.kind == "sale" %}
+                {% if transaction.payment_details.credit_card_number %}
+
+                <p>Method of Payment: {{ transaction.payment_details.credit_card_company }} #{{ transaction.payment_details.credit_card_number }}</p>
+
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        <table class="content-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="left" width="50%">
+                        SHIPPING ADDRESS
+                    </th>
+                    <th class="left" width="50%">
+                        BILLING ADDRESS
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ shipping_address.name }}
+                        <br />{{ shipping_address.street }}
+                        <br />{{ shipping_address.city }}, {{ shipping_address.province }} {{ shipping_address.zip }}
+                        <br />{{ shipping_address.country }}
+                    </td>
+                    <td>
+                        {{ billing_address.name }}
+                        <br />{{ billing_address.street }}
+                        <br />{{ billing_address.city }}, {{ billing_address.province }} {{ billing_address.zip }}
+                        <br />{{ billing_address.country }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        {% if line_items %}
+
+        <table class="content-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="left">
+                        ITEM
+                    </th>
+                    <th class="center">
+                        SKU
+                    </th>
+                    <th class="center">
+                        PRICE
+                    </th>
+                    <th class="center">
+                        QTY
+                    </th>
+                    <th class="right">
+                        TOTAL
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for line in line_items %}
+
+                <tr>
+                    <td class="left">
+                        {{ line.title }}
+                    </td>
+                    <td class="center">
+                        {{ line.sku }}
+                    </td>
+                    <td class="center">
+                        {{ line.price | money }}
+                    </td>
+                    <td class="center">
+                        {{ line.quantity }}
+                    </td>
+                    <td class="right">
+                        {{ line.line_price | money }}
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        {% endif %}
+
+        {% if discounts %}
+        <p class="right"><em><span class="label">Discounts :</span> {{ discounts_savings | money }}</em></p>
+        {% endif %}
+
+        <p class="right"><em><span class="label">Subtotal :</span> {{ subtotal_price | money }}</em></p>
+
+        {% for tax_line in tax_lines %}
+        <p class="right"><em><span class="label">{{ tax_line.title }} :</span> {{ tax_line.price | money }}</em></p>
+        {% endfor %}
+
+        {% if requires_shipping %}
+        <p class="right"><em><span class="label">Shipping :</span> {{ shipping_price | money }}</em></p>
+        {% endif %}
+        <p class="total right"><em>Total : {{ total_price | money }}</em></p>
+
+    {% endcapture %}
+
+{% when 2 %}
+    {% assign ttl = "Refund Notification" %}
+    {% assign ttl_img = "email_title_refund.jpg" %}
+
+    {% capture body_copy %}
+
+        {% if customer.name %}
+        <h2>Dear {{ customer.name }},</h2>
+        {% endif %}
+
+        <p>
+            <span class="label">{{ shop_name }}</span> has refunded your order ({{ name }}) {% if amount > 0 %} a total of {{ amount | money }}{% endif %} {% if refund_line_items.size > 0 %} for the following:
+        </p>
+
+        <table class="content-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="left">
+                        ITEM
+                    </th>
+                    <th class="center">
+                        SKU
+                    </th>
+                    <th class="center">
+                        PRICE
+                    </th>
+                    <th class="center">
+                        QTY
+                    </th>
+                    <th class="right">
+                        TOTAL
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for line in line_items %}
+
+                <tr>
+                    <td class="left">
+                        {{ line.title }}
+                    </td>
+                    <td class="center">
+                        {{ line.sku }}
+                    </td>
+                    <td class="center">
+                        {{ line.price | money }}
+                    </td>
+                    <td class="center">
+                        {{ line.quantity }}
+                    </td>
+                    <td class="right">
+                        {{ line.line_price | money }}
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        {% else %}
+        </p>
+        {% endif %}
+
+        <p>If you have any questions about this transaction, please feel free to <a href="http://www.log6ix.com/pages/customer-service">contact us</a>.</p>
+
+        <p><em>Thanks for shopping with us!</em><br />
+            <span class="total">{{ shop.name }}</span></p>
+
+    {% endcapture %}
+
+{% when 3 %}
+    {% assign ttl = "Your Order Has Shipped" %}
+    {% assign ttl_img = "email_title_shipped.jpg" %}
+
+    {% capture body_copy %}
+
+        <h2>Dear {{ billing_address.name }},</h2>
+        <p>{% if fulfillment.item_count == item_count %}All{% elsif fulfillment_status == 'fulfilled' %}The last{% else %}Some{% endif %} of the items from order {{ name }} have now been shipped:</p>
+
+        <table class="content-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="left">
+                        ITEM
+                    </th>
+                    <th class="center">
+                        SKU
+                    </th>
+                    <th class="right">
+                        QTY
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for line in fulfillment.fulfillment_line_items %}
+
+                <tr>
+                    <td class="left">
+                        {{ line.line_item.title }}
+                    </td>
+                    <td class="center">
+                        {{ line.line_item.sku }}
+                    </td>
+                    <td class="right">
+                        {{ line.quantity }}
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        {% if requires_shipping %}
+        <p>They are being shipped {% if fulfillment.tracking_company %}via {{ fulfillment.tracking_company }} {% endif %}to the following address:</p>
+        <p class="italic"><span class="label">{{ shipping_address.name }}</span>
+            <br />{{ shipping_address.address1 }}
+            {% if shipping_address.address2 %}<br />{{ shipping_address.address2 }}{% endif %}
+            <br />{{ shipping_address.city }}, {{ shipping_address.province }} {{ shipping_address.zip }}
+            <br />{{ shipping_address.country }}</p>
+
+        {% if fulfillment.tracking_number %}
+        <p>The tracking number for these items is <a href="{{ fulfillment.tracking_url }}">{{ fulfillment.tracking_number }}</a>. Click the tracking number to check the status of this shipment. Please allow some time for the status of the shipment to correctly display at the above address.{% if unfulfilled_line_items.size > 0 %} You will receive a confirmation email when more items from your order have been shipped.{% endif %}</p>
+        {% endif %}
+
+        {% endif %}
+
+        <p><em>Thanks for your order!</em><br />
+            <span class="total">{{ shop.name }}</span></p>
+
+    {% endcapture %}
+
+{% when 4 %}
+    {% assign ttl = "Shipping Update" %}
+    {% assign ttl_img = "email_title_update.jpg" %}
+
+    {% capture body_copy %}
+
+        <h2>Dear {{ billing_address.name }},</h2>
+        <p>The following shipped items from order {{ name }} have been updated with new shipping information:</p>
+
+        <table class="content-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="left">
+                        ITEM
+                    </th>
+                    <th class="center">
+                        SKU
+                    </th>
+                    <th class="right">
+                        QTY
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for line in fulfillment.fulfillment_line_items %}
+
+                <tr>
+                    <td class="left">
+                        {{ line.line_item.title }}
+                    </td>
+                    <td class="center">
+                        {{ line.line_item.sku }}
+                    </td>
+                    <td class="right">
+                        {{ line.quantity }}
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        {% if requires_shipping %}
+        <p>They are being shipped {% if fulfillment.tracking_company %}via {{ fulfillment.tracking_company }} {% endif %}to the following address:</p>
+        <p class="italic"><span class="label">{{ shipping_address.name }}</span>
+            <br />{{ shipping_address.address1 }}
+            {% if shipping_address.address2 %}<br />{{ shipping_address.address2 }}{% endif %}
+            <br />{{ shipping_address.city }}, {{ shipping_address.province }} {{ shipping_address.zip }}
+            <br />{{ shipping_address.country }}</p>
+
+        {% if fulfillment.tracking_number %}
+        <p>The tracking number for these items is <a href="{{ fulfillment.tracking_url }}">{{ fulfillment.tracking_number }}</a>. Click the tracking number to check the status of this shipment. Please allow some time for the status of the shipment to correctly display at the above address.{% if unfulfilled_line_items.size > 0 %} You will receive a confirmation email when more items from your order have been shipped.{% endif %}</p>
+        {% endif %}
+
+        {% endif %}
+
+        <p><em>Thanks for your order!</em><br />
+            <span class="total">{{ shop.name }}</span></p>
+
+    {% endcapture %}
+
+{% when 5 %}
+    {% assign ttl = "Account Activated" %}
+    {% assign ttl_img = "email_title_activated.jpg" %}
+
+    {% capture body_copy %}
+
+        {% if customer.name %}
+        <h2>Dear {{ customer.name }},</h2>
+        {% endif %}
+
+        <p>An account has been created for you at <span class="label">{{ shop.name }}</span>. Please visit the following URL to activate your account and set your password:</p>
+
+        <p><a href="{{ customer.account_activation_url }}">{{ customer.account_activation_url }}</a></p>
+
+        <p>If the account was created in error, you can visit the link above and select "Decline" to decline this invitation.</p>
+
+        <p><em>Thanks for shopping with us!</em><br />
+            <span class="total">{{ shop.name }}</span></p>
+
+    {% endcapture %}
+
+{% when 6 %}
+    {% assign ttl = "Welcome to Log 6ix" %}
+    {% assign ttl_img = "email_title_welcome.jpg" %}
+
+    {% capture body_copy %}
+
+        {% if customer.name %}
+        <h2>Dear {{ customer.name }},</h2>
+        {% endif %}
+
+        <p>This is to confirm that your account for <span class="label">{{ shop.name }}</span> is now active!</p>
+
+        <p>The next time you shop with us, you can save time at checkout by logging into your account. This will prefill your address and measurements at checkout.</p>
+
+        <p><em>Thanks for shopping with us!</em><br />
+            <span class="total">{{ shop.name }}</span></p>
+
+    {% endcapture %}
+
+{% when 7 %}
+    {% assign ttl = "Reset Password" %}
+    {% assign ttl_img = "email_title_resetpassword.jpg" %}
+
+    {% capture body_copy %}
+
+        {% if customer.name %}
+        <h2>Dear {{ customer.name }},</h2>
+        {% endif %}
+
+        <p>You have requested to have your password reset for your account at <span class="label">{{ shop.name }}</span>. Please visit the following URL to reset your password:</p>
+
+        <p><a href="{{ customer.reset_password_url }}">{{ customer.reset_password_url }}</a></p>
+
+        <p>If you have not requested to reset your password, you can safely ignore this email.</p>
+
+        <p><em>Thanks for shopping with us!</em><br />
+            <span class="total">{{ shop.name }}</span></p>
+
+    {% endcapture %}
+
+{% when 8 %}
+    {% assign ttl = "Your Gift Card is Ready" %}
+    {% assign ttl_img = "email_title_giftcard.jpg" %}
+
+    {% capture body_copy %}
+
+        <h2>Hey{% if gift_card.customer %} {{ gift_card.customer.first_name }}{% endif %}!</h2>
+
+        <p>Here is your <span class="label">{{ shop.name }}</span> gift card for {{ gift_card.initial_value | money_without_trailing_zeros }}. {% if gift_card.initial_value != gift_card.balance %} You have {{ gift_card.balance | money_without_trailing_zeros }} left on this gift card. {% endif %}</p>
+
+        <p><a href="{{ gift_card.url }}">To view or print your gift card, click here</a></p>
+
+        <p>Purchased this gift card for someone else? Feel free to forward them this email.</p>
+
+        <p><em>Thanks for shopping with us!</em><br />
+            <span class="total">{{ shop.name }}</span></p>
+
+    {% endcapture %}
+
+{% when 9 %}
+    {% assign ttl = "New Order Confirmation" %}
+    {% assign ttl_img = "email_title_neworder.jpg" %}
+
+    {% capture body_copy %}
+
+        <h2>A new order has been received!</h2>
+        <p>Order: <a href="{{ shop.url }}/account/orders/{{ id }}">{{ name }}</a> Date: {{ date | date: "%m/%d/%Y" }}</p>
+
+        {% for transaction in transactions %}
+            {% if transaction.kind == "authorization" or transaction.kind == "sale" %}
+                {% if transaction.payment_details.credit_card_number %}
+
+                <p>Method of Payment: {{ transaction.payment_details.credit_card_company }} #{{ transaction.payment_details.credit_card_number }}</p>
+
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        <table class="content-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="left" width="50%">
+                        SHIPPING ADDRESS
+                    </th>
+                    <th class="left" width="50%">
+                        BILLING ADDRESS
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ shipping_address.name }}
+                        <br />{{ shipping_address.street }}
+                        <br />{{ shipping_address.city }}, {{ shipping_address.province }} {{ shipping_address.zip }}
+                        <br />{{ shipping_address.country }}
+                    </td>
+                    <td>
+                        {{ billing_address.name }}
+                        <br />{{ billing_address.street }}
+                        <br />{{ billing_address.city }}, {{ billing_address.province }} {{ billing_address.zip }}
+                        <br />{{ billing_address.country }}
+                        <br />{{ billing_address.phone }}
+                        <br /><a href="mailto:{{ email }}">{{ email }}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        {% if line_items %}
+
+        <table class="content-table" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="left">
+                        ITEM
+                    </th>
+                    <th class="center">
+                        SKU
+                    </th>
+                    <th class="center">
+                        PRICE
+                    </th>
+                    <th class="center">
+                        QTY
+                    </th>
+                    <th class="right">
+                        TOTAL
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for line in line_items %}
+
+                <tr>
+                    <td class="left">
+                        {{ line.title }}
+                    </td>
+                    <td class="center">
+                        {{ line.sku }}
+                    </td>
+                    <td class="center">
+                        {{ line.price | money }}
+                    </td>
+                    <td class="center">
+                        {{ line.quantity }}
+                    </td>
+                    <td class="right">
+                        {{ line.line_price | money }}
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        {% endif %}
+
+        {% if discounts %}
+        <p class="right"><em><span class="label">Discounts :</span> {{ discounts_savings | money }}</em></p>
+        {% endif %}
+
+        <p class="right"><em><span class="label">Subtotal :</span> {{ subtotal_price | money }}</em></p>
+
+        {% for tax_line in tax_lines %}
+        <p class="right"><em><span class="label">{{ tax_line.title }} :</span> {{ tax_line.price | money }}</em></p>
+        {% endfor %}
+
+        {% if requires_shipping %}
+        <p class="right"><em><span class="label">Shipping :</span> {{ shipping_price | money }}</em></p>
+        {% endif %}
+        <p class="total right"><em>Total : {{ total_price | money }}</em></p>
+
+    {% endcapture %}
+
+{% when 10 %}
+    {% assign ttl = "Order Cancellation" %}
+    {% assign ttl_img = "email_title_cancellation.jpg" %}
+
+    {% capture body_copy %}
+
+        <h2>Dear {{ billing_address.name }},</h2>
+
+        <p>Your order <a href="{{ shop.url }}/account/orders/{{ id }}">{{ name }}</a> was cancelled {% case cancel_reason %}{% when 'customer' %}at your request. {% when 'inventory' %}because we did not have enough stock to fulfill your order.{% when 'fraud' %}because we suspect it is fraudulent.{% when 'other' %}due to unforseen circumstances.{% endcase %} {% if financial_status == 'voided' %}Your payment has been voided.{% elsif financial_status == 'credited' %}Your payment has been refunded.{% endif %} Please feel free to <a href="{{ shop.url }}/pages/contact">contact us</a> if you have any questions or concerns.</p>
+
+        <p><em>Thanks for shopping with us!</em><br />
+            <span class="total">{{ shop.name }}</span></p>
+
+    {% endcapture %}
+
+{% else %}
+    {% assign ttl = "Made to Fit" %}
+    {% assign ttl_img = "email_title_default.jpg" %}
+
+    {% capture body_copy %}
+
+        {% if billing_address.name %}
+        <h2>Dear {{ billing_address.name }},</h2>
+        {% endif %}
+
+        <p><em>Thanks for shopping with us!</em><br />
+            <span class="total">{{ shop.name }}</span></p>
+
+    {% endcapture %}
+
+{% endcase %}
+
+
+
+
+
+{% comment %}
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// DO NOT EDIT BELOW
+//
+///////////////////////////////////////////////////////////////////////////////////////
+{% endcomment %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>{{ ttl }}</title>
+
+    <style type="text/css">
+        html {
+            background-color: #e6e6e7;
+        }
+        body {
+            background-color: #e6e6e7;
+        }
+        h2 {
+            color: #e97242;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.1em;
+            margin-bottom: 1.25em;
+        }
+        p {
+            color: #6a4a2a;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5em;
+            margin-bottom: 2em;
+        }
+        a {
+            color: #e97242;
+        }
+        img {
+            border: none;
+            display: block;
+        }
+        table {
+            border: none;
+        }
+        .right {
+            text-align: right;
+        }
+        .left {
+            text-align: left;
+        }
+        .center {
+            text-align: center;
+        }
+        .middle {
+            vertical-align: middle;
+        }
+        .bottom {
+            vertical-align: bottom;
+        }
+        .italic {
+            /*font-style: italic;*/
+        }
+        .total {
+            color: #6a4a2a;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .label {
+            font-weight: 700;
+        }
+        #main_wrapper {
+            background-color: #fff;
+        }
+        .table-body {
+            background-color: #FFF;
+            width: 600px;
+        }
+        #title {
+            background-color: #fff;
+        }
+        #header_nav {
+            background-color: #F4F4F4;
+        }
+        .content-cell {
+            padding: 40px 30px 60px;
+        }
+        .content-table {
+            margin-bottom: 40px;
+        }
+        .content-table th {
+            color: #6a4a2a;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 8px 10px;
+            background-color: #fff;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            vertical-align: top;
+        }
+        .content-table td {
+            border-collapse: collapse;
+            border-top: 1px solid #b3b3b3;
+            color: #6a4a2a;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5em;
+            margin-bottom: 2em;
+            padding: 6px 10px;
+            vertical-align: top;
+        }
+        #social_nav {
+            background-color: #e6e6e7;
+        }
+        #footer_nav {
+            background-color: #e6e6e7;
+        }
+        #footer_nav a {
+            color: #6a4a2a;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        #footer_nav td {
+            color: #6a4a2a;
+            padding: 10px 0;
+            text-align: center;
+        }
+        #footer_contact td p {
+            color: #6a4a2a;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            padding: 20px 0 40px;
+            text-align: center;
+        }
+        #footer_contact td a {
+            color: #6a4a2a;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% comment %} WRAPPER TABLE {% endcomment %}
+    <table id="main_wrapper" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+
+                {% comment %} HEADER LOGO {% endcomment %}
+                <table id="logo" width="600" align="center" cellpadding="0" cellspacing="0" class="table-body">
+                    <tr>
+                        <td>
+                            <a href="http://www.log6ix.com">
+                                <img src="{{ 'email-logo.png' | asset_url }}" alt="Log 6ix" width="600" height="169" />
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+
+                {% comment %} EMAIL TITLE 
+                <table id="title" width="600" align="center" cellpadding="0" cellspacing="0" class="table-body">
+                    <tr>
+                        <td><img src="{{ ttl_img | asset_url }}" alt="{{ ttl }}" width="600" height="125" /></td>
+                    </tr>
+                </table>
+                {% endcomment %}
+
+                {% comment %} HEADER NAV 
+                <table id="header_nav" width="600" align="center" cellpadding="0" cellspacing="0" class="table-body">
+                    <tr>
+                        <td>
+                            <a href="http://www.doubler.com/pages/our-shirts">
+                                <img src="{{ 'email_nav_ourshirts.jpg' | asset_url }}" alt="Our Shirts" width="158" height="70" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="http://www.doubler.com/pages/shop">
+                                <img src="{{ 'email_nav_shop.jpg' | asset_url }}" alt="Shop" width="96" height="70" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="http://www.doubler.com/pages/customer-service">
+                                <img src="{{ 'email_nav_customerservice.jpg' | asset_url }}" alt="Customer Service" width="203" height="70" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="http://www.doubler.com/pages/contact">
+                                <img src="{{ 'email_nav_contact.jpg' | asset_url }}" alt="Contact" width="143" height="70" />
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                {% endcomment %}
+
+                {% comment %} CONTENT AREA {% endcomment %}
+                <table id="content" width="600" align="center" cellpadding="0" cellspacing="0" class="table-body">
+                    <tr>
+                        <td class="content-cell">
+                        {% comment %} START SNIPPET PASTE AREA {% endcomment %}
+
+                            {{ body_copy }}
+
+                        {% comment %} END SNIPPET PASTE AREA {% endcomment %}
+                        </td>
+                    </tr>
+                </table>
+
+                {% comment %} SOCIAL LINKS NAV 
+                <table id="social_nav" width="600" align="center" cellpadding="0" cellspacing="0" class="table-body">
+                    <tr>
+                        <td width="119">
+                            &nbsp;
+                        </td>
+                        <td width="93">
+                            <a href="http://facebook.com/doubleRbrand">
+                                <img src="{{ 'email_facebook.jpg' | asset_url }}" alt="Join Us On Facebook" width="93" height="100" />
+                            </a>
+                        </td>
+                        <td width="92">
+                            <a href="http://www.pinterest.com/doubledoubler/">
+                                <img src="{{ 'email_pinterest.jpg' | asset_url }}" alt="Follow Us On Pinterest" width="92" height="100" />
+                            </a>
+                        </td>
+                        <td width="80">
+                            <a href="https://twitter.com/doublerbrand">
+                                <img src="{{ 'email_twitter.jpg' | asset_url }}" alt="Follow Us On Twitter" width="80" height="100" />
+                            </a>
+                        </td>
+                        <td width="98">
+                            <a href="http://instagram.com/doublerbrand">
+                                <img src="{{ 'email_instagram.jpg' | asset_url }}" alt="Follow Us On Instagram" width="98" height="100" />
+                            </a>
+                        </td>
+                        <td width="118">
+                            &nbsp;
+                        </td>
+                    </tr>
+                </table>
+                {% endcomment %}
+
+                {% comment %} FOOTER NAV {% endcomment %}
+                <table id="footer_nav" width="600" align="center" cellpadding="0" cellspacing="0" class="table-body">
+                    <tr>
+                        <td>
+                        	<a href="{{ settings.facebook_url }}">Facebook</a>&emsp;|&emsp;
+                        	<a href="{{ settings.twitter_url }}">Twitter</a>&emsp;|&emsp;
+                            <a href="http://www.log6ix.com/pages/customer-service">Customer Service</a>&emsp;|&emsp;
+                            <a href="http://www.log6ix.com/pages/privacy-policy">Privacy Policy</a>&emsp;|&emsp;
+                            <a href="http://www.log6ix.com/pages/terms-of-service">Terms of Service</a>
+                        </td>
+                    </tr>
+                </table>
+                
+
+                {% comment %} FOOTER CONTACT INFO {% endcomment %}
+                <table id="footer_contact" width="600" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <p>
+                                <span class="label">Log 6ix</span><br>
+
+                               2591 Dallas Parkway, Ste 505, Frisco, Texas, 75034<br>
+
+                                Phone: (469) 888-5586 &bull; Email: <a href="mailto:info@zavadascientific.com" target="_blank">info@zavadascientific.com</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

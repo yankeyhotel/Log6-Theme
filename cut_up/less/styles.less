@@ -910,11 +910,17 @@
 			.sans-bold(30);
 			color: @orange;
 			margin-bottom: 30px;
-			text-align: left;
+			text-align: center;
 			small {
 				.sans-book(18);
 				color: @coffee;
 			}
+		}
+
+		.template-customers-account &,
+		.template-customers-order &,
+		.template-customers-addresses & {
+			h2 { text-align: left; }
 		}
 
 		a {
@@ -1026,6 +1032,49 @@
 					}
 				}
 			}
+
+			form {
+				
+				td {
+					vertical-align: middle;
+				}
+
+				.lbl label {
+					.sans-bold(16);
+					color: @coffee;
+					font-weight: normal;
+					width: 100px;
+				}
+
+				.value { color: @coffee; }
+				
+				select { 
+					margin: 20px 0; 
+					width: 350px;
+				}
+
+				input[type="text"],
+				input[type="email"],
+				input[type="password"] {
+					.hex-to-rgba(@coffee, .65);
+					.placeholder(@rgba);
+					.sans-book(18);
+					background-color: @gray-middle;
+					border: none;
+					border-radius: 0;
+					.box-shadow(none);
+					color: @coffee;
+					margin-bottom: 10px;
+					padding: 10px 20px;
+					width: 350px;
+				}
+				
+				.btn {
+					display: inline-block;
+				}
+
+			}
+		
 		}// #address_tables
 
 		#add_address {
@@ -1078,48 +1127,6 @@
 					text-align: right;
 				}
 			}
-		}
-
-		form {
-			
-			td {
-				vertical-align: middle;
-			}
-
-			.lbl label {
-				.sans-bold(16);
-				color: @coffee;
-				font-weight: normal;
-				width: 100px;
-			}
-
-			.value { color: @coffee; }
-			
-			select { 
-				margin: 20px 0; 
-				width: 350px;
-			}
-
-			input[type="text"],
-			input[type="email"],
-			input[type="password"] {
-				.hex-to-rgba(@coffee, .65);
-				.placeholder(@rgba);
-				.sans-book(18);
-				background-color: @gray-middle;
-				border: none;
-				border-radius: 0;
-				.box-shadow(none);
-				color: @coffee;
-				margin-bottom: 10px;
-				padding: 10px 20px;
-				width: 350px;
-			}
-			
-			.btn {
-				display: inline-block;
-			}
-
 		}
 		
 	}// #customer_hldr

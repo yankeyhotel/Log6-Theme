@@ -7552,7 +7552,7 @@ button {
   font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #e97242;
   margin-bottom: 30px;
-  text-align: left;
+  text-align: center;
 }
 #customer_hldr h2 small {
   font-size: 18px;
@@ -7561,6 +7561,11 @@ button {
   line-height: 1.42857143;
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #6a4a2a;
+}
+.template-customers-account #customer_hldr h2,
+.template-customers-order #customer_hldr h2,
+.template-customers-addresses #customer_hldr h2 {
+  text-align: left;
 }
 #customer_hldr a {
   color: #e97242;
@@ -7703,6 +7708,79 @@ button {
   padding-left: 20px;
   padding-right: 20px;
 }
+#customer_hldr #address_tables form td,
+#customer_hldr #add_address form td {
+  vertical-align: middle;
+}
+#customer_hldr #address_tables form .lbl label,
+#customer_hldr #add_address form .lbl label {
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+  font-weight: normal;
+  width: 100px;
+}
+#customer_hldr #address_tables form .value,
+#customer_hldr #add_address form .value {
+  color: #6a4a2a;
+}
+#customer_hldr #address_tables form select,
+#customer_hldr #add_address form select {
+  margin: 20px 0;
+  width: 350px;
+}
+#customer_hldr #address_tables form input[type="text"],
+#customer_hldr #add_address form input[type="text"],
+#customer_hldr #address_tables form input[type="email"],
+#customer_hldr #add_address form input[type="email"],
+#customer_hldr #address_tables form input[type="password"],
+#customer_hldr #add_address form input[type="password"] {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #6a4a2a;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  width: 350px;
+}
+#customer_hldr #address_tables form input[type="text"]::-moz-placeholder,
+#customer_hldr #add_address form input[type="text"]::-moz-placeholder,
+#customer_hldr #address_tables form input[type="email"]::-moz-placeholder,
+#customer_hldr #add_address form input[type="email"]::-moz-placeholder,
+#customer_hldr #address_tables form input[type="password"]::-moz-placeholder,
+#customer_hldr #add_address form input[type="password"]::-moz-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+  opacity: 1;
+}
+#customer_hldr #address_tables form input[type="text"]:-ms-input-placeholder,
+#customer_hldr #add_address form input[type="text"]:-ms-input-placeholder,
+#customer_hldr #address_tables form input[type="email"]:-ms-input-placeholder,
+#customer_hldr #add_address form input[type="email"]:-ms-input-placeholder,
+#customer_hldr #address_tables form input[type="password"]:-ms-input-placeholder,
+#customer_hldr #add_address form input[type="password"]:-ms-input-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+}
+#customer_hldr #address_tables form input[type="text"]::-webkit-input-placeholder,
+#customer_hldr #add_address form input[type="text"]::-webkit-input-placeholder,
+#customer_hldr #address_tables form input[type="email"]::-webkit-input-placeholder,
+#customer_hldr #add_address form input[type="email"]::-webkit-input-placeholder,
+#customer_hldr #address_tables form input[type="password"]::-webkit-input-placeholder,
+#customer_hldr #add_address form input[type="password"]::-webkit-input-placeholder {
+  color: rgba(106, 74, 42, 0.65);
+}
+#customer_hldr #address_tables form .btn,
+#customer_hldr #add_address form .btn {
+  display: inline-block;
+}
 #customer_hldr #add_address {
   margin-top: -12px !important;
 }
@@ -7773,62 +7851,6 @@ button {
 #customer_hldr table#order_details tfoot td {
   padding-right: 20px;
   text-align: right;
-}
-#customer_hldr form td {
-  vertical-align: middle;
-}
-#customer_hldr form .lbl label {
-  font-size: 16px;
-  font-size: 1.6rem;
-  line-height: 1.42857143;
-  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #6a4a2a;
-  font-weight: normal;
-  width: 100px;
-}
-#customer_hldr form .value {
-  color: #6a4a2a;
-}
-#customer_hldr form select {
-  margin: 20px 0;
-  width: 350px;
-}
-#customer_hldr form input[type="text"],
-#customer_hldr form input[type="email"],
-#customer_hldr form input[type="password"] {
-  font-size: 18px;
-  font-size: 1.8rem;
-  font-weight: normal;
-  line-height: 1.42857143;
-  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #e2e2e2;
-  border: none;
-  border-radius: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  color: #6a4a2a;
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  width: 350px;
-}
-#customer_hldr form input[type="text"]::-moz-placeholder,
-#customer_hldr form input[type="email"]::-moz-placeholder,
-#customer_hldr form input[type="password"]::-moz-placeholder {
-  color: rgba(106, 74, 42, 0.65);
-  opacity: 1;
-}
-#customer_hldr form input[type="text"]:-ms-input-placeholder,
-#customer_hldr form input[type="email"]:-ms-input-placeholder,
-#customer_hldr form input[type="password"]:-ms-input-placeholder {
-  color: rgba(106, 74, 42, 0.65);
-}
-#customer_hldr form input[type="text"]::-webkit-input-placeholder,
-#customer_hldr form input[type="email"]::-webkit-input-placeholder,
-#customer_hldr form input[type="password"]::-webkit-input-placeholder {
-  color: rgba(106, 74, 42, 0.65);
-}
-#customer_hldr form .btn {
-  display: inline-block;
 }
 /* -------------------------------------------------------
   * End Customer Pages  

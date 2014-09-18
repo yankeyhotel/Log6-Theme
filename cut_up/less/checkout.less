@@ -51,16 +51,13 @@ body, #main, #container, #header, #footer {
 	font-weight: normal !important;
 }
 
-html {
-	background-image: url('{{ "bg-header.jpg" | asset_url }}' );
-	background-position: center top;
-	-moz-background-size: cover;
-	background-size: cover;
-	background-repeat: no-repeat;
-	height: 100%;
-	width: 100%;
+html { 
+  background: url('{{ "bg-header.jpg" | asset_url }}' ) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-
 
 
 #logo {

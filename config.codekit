@@ -2921,6 +2921,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/log6ix-10807871\/assets\/email-logo.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 36905,
+		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/email-logo.png",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/email-logo.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/log6ix-10807871\/assets\/favicon-160x160.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3038,6 +3049,17 @@
 		"initialSize": 114953,
 		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-natual-odor-eliminator.png",
 		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/indiv-natual-odor-eliminator.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/log6ix-10807871\/assets\/indivi-fresh-breath-for-pets.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 97547,
+		"inputAbbreviatedPath": "\/log6ix-10807871\/assets\/indivi-fresh-breath-for-pets.png",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/indivi-fresh-breath-for-pets.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
