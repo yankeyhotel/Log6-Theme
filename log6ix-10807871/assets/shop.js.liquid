@@ -54,13 +54,18 @@ jQuery(function($) {
 	/*==========================*/
 	var blue 	= "#0000ff",	// description
 		red 	= "#ff0000",	// value
-		green 	= "#00ff00";	// shipping
+		green 	= "#00ff00",	// shipping
+		purple	= "#9900ff"; 	// additional only show in modal
 
 	if ( $(".product").length ) {
 
 		// find all the "blue" descriptions
 		$("span[style*='"+ blue +"']").each(function(){
-			$(this).parent().hide();
+			$(this).parent().hide().addClass("description");
+		});
+
+		$("span[style*='"+ purple +"']").each(function(){
+			$(this).parent().hide().addClass("description-modal");
 		});
 
 		// find all the values
@@ -68,6 +73,11 @@ jQuery(function($) {
 			var value = $(this).text();
 			$(this).closest(".content").find("h1").before("<p class='value'>"+ value +"</p>");
 			$(this).remove();
+		});
+
+		// remove empty <p>
+		$(".product p").each(function(){
+			if ($(this).text() == "") { $(this).remove(); }
 		});
 
 	}// if

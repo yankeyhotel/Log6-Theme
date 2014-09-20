@@ -22,9 +22,10 @@
  		&:hover { text-decoration: none; }
  	}
 
- 	span[style*="#ff9900"] { color: @orange !important; }
- 	span[style*="#00ff00"] { color: @green !important; }
- 	span[style*="#0000ff"] { color: @coffee !important; }
+ 	span[style*="#ff9900"], span.orange { color: @orange !important; }
+ 	span[style*="#00ff00"], span.green { color: @green !important; }
+ 	span[style*="#0000ff"], span.blue,
+ 	span[style*="#9900ff"], span.purple { color: @coffee !important; }
 	
  	strong { 
  		font-family: @sans-bold; 
@@ -54,7 +55,11 @@
 		 		.transition(opacity .3s ease-out);
 		 		&:hover { .opacity(.8); }
 		 	}
-		 	img { max-width: 100%; }
+		 	img { 
+		 		height: 126px;
+		 		max-width: 100%;
+		 		width: 220px; 
+		 	}
 		}// #logo 
 
 		ul {
@@ -77,6 +82,7 @@
 						width: 24px;
 						
 						img { 
+							.square(24px);
 							margin-top: -2px;
 							max-width: 100%; 
 							vertical-align: text-top;
@@ -183,8 +189,10 @@
 		margin-top: -110px;
 		position: relative;
 		z-index: 5;
-
-		.template-page & { height: 800px; }
+		
+		.template-product & { height: 950px; }
+		.template-page &,
+		.template-404 & { height: 800px; }
 		.template-cart &,
 		.template-customers-login &,
 		.template-customers-account &,
@@ -205,11 +213,14 @@
  * ------------------------------------------------------- 
 */
 	.header-component {
+		height: 920px;
 		margin-top: -920px;
 		position: relative;
 		z-index: 10;
-
-		.template-page & { margin-top: -800px; }
+		
+		.template-product & { height: 950px; margin-top: -950px; }
+		.template-page &,
+		.template-404 & { margin-top: -800px; }
 		
 		.col-sm-9 { padding-top: 230px; }
 		.col-sm-6 { padding-top: 140px; }
@@ -234,10 +245,6 @@
 		
 		.product-hldr {
 			text-align: center;
-		}
-
-		&.home {
-			margin-bottom: -100px;
 		}
 		
 		&.page {
@@ -264,7 +271,7 @@
 		> h2 {
 			.sans-book(50);
 			color: @green;
-			margin: -30px 0 50px;
+			margin: 50px 0;
 			text-transform: uppercase;
 		}
 
@@ -303,6 +310,11 @@
 					span[style*="#00ff00"] {
 						.sans-book(24);
 					}// .shipping
+
+					a {
+						color: @green;
+						&:hover { color: @green-dark; }
+					}
 
 				}// p
 
@@ -391,8 +403,8 @@
 		
 
 		.header-component & {
-			height: 920px;
-			padding-top: 250px;
+			height: 950px;
+			padding-top: 200px;
 
 			.col-sm-6 { padding: 0; } 
 			.col-sm-9 { padding: 0 0 0 40px; }
@@ -401,9 +413,10 @@
 				// override the js hiding the "blue"
 				#product-description p { 
 					.rem-calc(16);
-					display: block !important;
 					line-height: 1.5em;
 					margin-bottom: 20px;
+
+					&.description { display: block !important; }
 				}
 
 				.btn {
@@ -439,6 +452,62 @@
 			width: 100px;
 		}
 	}
+
+	#product-modal {
+		.modal-dialog { width: 620px; }
+ 	
+ 		.modal-content {
+ 			.box-shadow(none);
+ 			border: none;
+ 			border-radius: 0;
+ 		}// .modal-content
+
+ 		.modal-header {
+ 			.clearfix();
+ 			border: none;
+ 			padding: 40px 80px 0;
+ 			position: relative;
+
+ 			h4 {
+ 				.sans-bold(36);
+ 				color: @coffee;
+ 				padding-top: 10px;
+ 			}// h4
+
+ 			.close {
+ 				.rem-calc(40);
+ 				position: absolute;
+ 					top: 12px;
+ 					right: 30px;
+ 			}
+
+ 		}// .modal-header
+
+ 		.modal-body {
+ 			.clearfix();
+ 			border: none;
+ 			padding: 0 80px 40px;
+
+ 			p {
+ 				.sans-book(18);
+ 				color: @coffee;
+ 				display: block !important;
+ 				margin-bottom: 20px;
+ 				&.price {
+ 					.sans-bold(26, 1);
+					color: @orange;
+ 				}
+ 			}
+
+ 			ul {
+ 				.sans-book(18);
+ 				color: @coffee;
+ 				margin-bottom: 20px;
+ 				padding-left: 24px;
+ 			}
+
+ 		}// .modal-body
+	}// #product-modal
 
 /* -------------------------------------------------------
  * End Products  
@@ -576,7 +645,11 @@
 				&:hover { .opacity(.8); }
 			}
 
-			img { max-width: 100%; }
+			img { 
+		 		height: 126px;
+		 		max-width: 100%;
+		 		width: 220px; 
+		 	}
 		}// logo-footer
 
 	}// #footer
@@ -664,8 +737,9 @@
 				border-radius: 0;
 				.box-shadow(none);
 				color: @coffee;
-				padding: 30px 20px;
 			}// .form-control
+			
+			input[type="text"], input[type="email"] { height: 50px; }
 
 			textarea.form-control { padding: 20px; }
 			

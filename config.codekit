@@ -2577,11 +2577,11 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/cut_up\/js\/script.js",
-		"outputAbbreviatedPath": "\/cut_up\/js\/min\/script-min.js",
+		"outputAbbreviatedPath": "\/log6ix-10807871\/assets\/script-min.js.liquid",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
 		},
 	"\/cut_up\/less\/bootstrap.less": {
 		"allowInsecureImports": 0,

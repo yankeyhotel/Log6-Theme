@@ -6451,13 +6451,18 @@ a {
 a:hover {
   text-decoration: none;
 }
-span[style*="#ff9900"] {
+span[style*="#ff9900"],
+span.orange {
   color: #e97242 !important;
 }
-span[style*="#00ff00"] {
+span[style*="#00ff00"],
+span.green {
   color: #8faa23 !important;
 }
-span[style*="#0000ff"] {
+span[style*="#0000ff"],
+span.blue,
+span[style*="#9900ff"],
+span.purple {
   color: #6a4a2a !important;
 }
 strong {
@@ -6496,7 +6501,9 @@ button {
   filter: alpha(opacity=80);
 }
 #nav #logo img {
+  height: 126px;
   max-width: 100%;
+  width: 220px;
 }
 #nav ul {
   padding-left: 0;
@@ -6533,6 +6540,8 @@ button {
   width: 24px;
 }
 #nav ul li.social a img {
+  width: 24px;
+  height: 24px;
   margin-top: -2px;
   max-width: 100%;
   vertical-align: text-top;
@@ -6638,7 +6647,11 @@ button {
   position: relative;
   z-index: 5;
 }
-.template-page #header {
+.template-product #header {
+  height: 950px;
+}
+.template-page #header,
+.template-404 #header {
   height: 800px;
 }
 .template-cart #header,
@@ -6657,11 +6670,17 @@ button {
  * ------------------------------------------------------- 
 */
 .header-component {
+  height: 920px;
   margin-top: -920px;
   position: relative;
   z-index: 10;
 }
-.template-page .header-component {
+.template-product .header-component {
+  height: 950px;
+  margin-top: -950px;
+}
+.template-page .header-component,
+.template-404 .header-component {
   margin-top: -800px;
 }
 .header-component .col-sm-9 {
@@ -6698,9 +6717,6 @@ button {
 .header-component .product-hldr {
   text-align: center;
 }
-.header-component.home {
-  margin-bottom: -100px;
-}
 .header-component.page {
   padding-top: 200px;
 }
@@ -6723,7 +6739,7 @@ button {
   line-height: 1.42857143;
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #8faa23;
-  margin: -30px 0 50px;
+  margin: 50px 0;
   text-transform: uppercase;
 }
 .products .product {
@@ -6791,6 +6807,12 @@ button {
   font-weight: normal;
   line-height: 1.42857143;
   font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.products .product .content p a {
+  color: #8faa23;
+}
+.products .product .content p a:hover {
+  color: #79901d;
 }
 .products .product .content ul {
   margin: 30px 0 30px -16px;
@@ -6870,8 +6892,8 @@ button {
   max-width: 100%;
 }
 .header-component .products {
-  height: 920px;
-  padding-top: 250px;
+  height: 950px;
+  padding-top: 200px;
 }
 .header-component .products .col-sm-6 {
   padding: 0;
@@ -6882,9 +6904,11 @@ button {
 .header-component .products .content #product-description p {
   font-size: 16px;
   font-size: 1.6rem;
-  display: block !important;
   line-height: 1.5em;
   margin-bottom: 20px;
+}
+.header-component .products .content #product-description p.description {
+  display: block !important;
 }
 .header-component .products .content .btn {
   vertical-align: top;
@@ -6918,6 +6942,100 @@ button {
   padding: 24px 20px;
   text-align: center;
   width: 100px;
+}
+#product-modal .modal-dialog {
+  width: 620px;
+}
+#product-modal .modal-content {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+#product-modal .modal-header {
+  border: none;
+  padding: 40px 80px 0;
+  position: relative;
+}
+#product-modal .modal-header:before,
+#product-modal .modal-header:after {
+  content: " ";
+  display: table;
+}
+#product-modal .modal-header:after {
+  clear: both;
+}
+#product-modal .modal-header:before,
+#product-modal .modal-header:after {
+  content: " ";
+  display: table;
+}
+#product-modal .modal-header:after {
+  clear: both;
+}
+#product-modal .modal-header h4 {
+  font-size: 36px;
+  font-size: 3.6rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+  padding-top: 10px;
+}
+#product-modal .modal-header .close {
+  font-size: 40px;
+  font-size: 4rem;
+  position: absolute;
+  top: 12px;
+  right: 30px;
+}
+#product-modal .modal-body {
+  border: none;
+  padding: 0 80px 40px;
+}
+#product-modal .modal-body:before,
+#product-modal .modal-body:after {
+  content: " ";
+  display: table;
+}
+#product-modal .modal-body:after {
+  clear: both;
+}
+#product-modal .modal-body:before,
+#product-modal .modal-body:after {
+  content: " ";
+  display: table;
+}
+#product-modal .modal-body:after {
+  clear: both;
+}
+#product-modal .modal-body p {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+  display: block !important;
+  margin-bottom: 20px;
+}
+#product-modal .modal-body p.price {
+  font-size: 26px;
+  font-size: 2.6rem;
+  font-weight: normal;
+  line-height: 1;
+  font-family: "texgyreadventorbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #e97242;
+}
+#product-modal .modal-body ul {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.42857143;
+  font-family: "texgyreadventorregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #6a4a2a;
+  margin-bottom: 20px;
+  padding-left: 24px;
 }
 /* -------------------------------------------------------
  * End Products  
@@ -7086,7 +7204,9 @@ button {
   filter: alpha(opacity=80);
 }
 #footer #logo-footer img {
+  height: 126px;
   max-width: 100%;
+  width: 220px;
 }
 /* -------------------------------------------------------
  * End Footer  
@@ -7219,7 +7339,6 @@ button {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #6a4a2a;
-  padding: 30px 20px;
 }
 #contact #contactFormWrapper .form-control::-moz-placeholder {
   color: rgba(106, 74, 42, 0.65);
@@ -7230,6 +7349,10 @@ button {
 }
 #contact #contactFormWrapper .form-control::-webkit-input-placeholder {
   color: rgba(106, 74, 42, 0.65);
+}
+#contact #contactFormWrapper input[type="text"],
+#contact #contactFormWrapper input[type="email"] {
+  height: 50px;
 }
 #contact #contactFormWrapper textarea.form-control {
   padding: 20px;
